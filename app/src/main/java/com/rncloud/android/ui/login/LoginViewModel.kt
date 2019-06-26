@@ -8,6 +8,7 @@ import com.rncloud.android.data.LoginRepository
 import com.rncloud.android.data.Result
 
 import com.rncloud.android.R
+import com.rncloud.android.data.model.LoginDataModel
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -17,9 +18,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    fun login(username: String, password: String) {
+    fun login(loginDataModel: LoginDataModel) {
         // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password)
+        val result = loginRepository.login(loginDataModel)
 
         if (result is Result.Success) {
             _loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))

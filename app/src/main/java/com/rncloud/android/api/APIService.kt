@@ -49,5 +49,6 @@ interface APIService {
 
     @POST("LoginForgotPass/UserValidationCallForLogin")
 //    fun userLogin(@Field("username")username:String, @Field("userpass")userpass:String) : Call<LoginResponse>
-    fun userLogin(@Body loginDataModel: LoginDataModel): Deferred<Response<LoginResponse>>
+//    fun userLogin(@Body loginDataModel: LoginDataModel): Deferred<Response<LoginResponse>>
+    fun userLogin(@Body loginDataModel: LoginDataModel): Call<LoginResponse>
 }

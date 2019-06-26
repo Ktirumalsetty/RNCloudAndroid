@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import arch.lavaira.com.android_kotlin_mvvm.architecture.ViewModelFactory
 import arch.lavaira.com.android_kotlin_mvvm.di.key.ViewModelKey
-import arch.lavaira.com.android_kotlin_mvvm.view.fragment.login.LoginViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

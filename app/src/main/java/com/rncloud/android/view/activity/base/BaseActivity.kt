@@ -1,15 +1,7 @@
+package com.rncloud.android.view.activity.base
 
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -20,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import arch.lavaira.com.android_kotlin_mvvm.view.listeners.BackButtonHandlerListener
 import arch.lavaira.com.android_kotlin_mvvm.view.listeners.BackPressListener
-import arch.lavaira.com.android_kotlin_mvvm.viewmodel.BaseViewModel
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import java.lang.ref.WeakReference
@@ -68,24 +59,24 @@ abstract class BaseActivity<V : ViewModel, D : ViewDataBinding> : AppCompatActiv
         dataBinding.setVariable(bindingVariable, viewModel)
         dataBinding.executePendingBindings()
 
-        observeBackPressAction()
+//        observeBackPressAction()
     }
 
-    /**
-     * Method which listens to back button press in toolbar
-     */
-    private fun observeBackPressAction() {
-        (viewModel as BaseViewModel<*>).backPressAction.observe(this, Observer {
-            onBackPressed()
-        })
-    }
-
-    /**
-     * Method which sets the title in the header
-     */
-    fun setTitle(title: String) {
-        (viewModel as BaseViewModel<*>).setTitle(title)
-    }
+//    /**
+//     * Method which listens to back button press in toolbar
+//     */
+//    private fun observeBackPressAction() {
+//        (viewModel as BaseViewModel<*>).backPressAction.observe(this, Observer { observable: Observable, any: Any ->
+//            onBackPressed()
+//        })
+//    }
+//
+//    /**
+//     * Method which sets the title in the header
+//     */
+//    fun setTitle(title: String) {
+//        (viewModel as BaseViewModel<*>).setTitle(title)
+//    }
 
     /**
      * Methods which handles the hardware back button / navigation back view

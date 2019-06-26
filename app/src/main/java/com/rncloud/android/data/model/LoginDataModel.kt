@@ -14,7 +14,7 @@ data class User(
 )
 
 data class LoginResponse(
-    val status: Int,
+    val status: LoginResponse?,
     val message: String?,
     val users: User?,
     val throwable: Throwable?

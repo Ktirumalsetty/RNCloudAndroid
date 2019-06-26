@@ -1,13 +1,12 @@
-package arch.lavaira.com.android_kotlin_mvvm.di
 
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
-import arch.lavaira.com.android_kotlin_mvvm.MvvmApplication
-import arch.lavaira.com.android_kotlin_mvvm.di.components.DaggerAppComponent
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import arch.lavaira.com.android_kotlin_mvvm.di.Injectable
+import com.rncloud.android.RNCloudApplication
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
@@ -21,10 +20,10 @@ import dagger.android.support.HasSupportFragmentInjector
  * Modified on: 4/3/19
  *****/
 object AppInjector {
-    fun init(mvvmApplication: MvvmApplication) {
-        DaggerAppComponent.builder().application(mvvmApplication)
-            .build().inject(mvvmApplication)
-        mvvmApplication.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
+    fun init(rnCloudApplication: RNCloudApplication) {
+        DaggerAppComponent.builder().application(rnCloudApplication)
+            .build().inject(rnCloudApplication)
+        rnCloudApplication.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 handleActivity(activity)
             }
