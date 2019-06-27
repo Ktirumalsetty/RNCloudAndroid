@@ -45,7 +45,7 @@ abstract class BaseActivity<V : ViewModel, D : ViewDataBinding> : AppCompatActiv
     @get:LayoutRes
     protected abstract val layoutRes: Int
 
-    abstract val bindingVariable: Int
+//    abstract val bindingVariable: Int
 
     protected abstract fun getViewModel(): Class<V>
 
@@ -56,8 +56,8 @@ abstract class BaseActivity<V : ViewModel, D : ViewDataBinding> : AppCompatActiv
         dataBinding.setLifecycleOwner(this)
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModel())
-        dataBinding.setVariable(bindingVariable, viewModel)
-        dataBinding.executePendingBindings()
+//        dataBinding.setVariable(bindingVariable, viewModel)
+//        dataBinding.executePendingBindings()
 
 //        observeBackPressAction()
     }

@@ -1,9 +1,7 @@
-package arch.lavaira.com.android_kotlin_mvvm.di.modules
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
-import arch.lavaira.com.android_kotlin_mvvm.architecture.ViewModelFactory
-import arch.lavaira.com.android_kotlin_mvvm.di.key.ViewModelKey
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.rncloud.android.ui.login.LoginViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

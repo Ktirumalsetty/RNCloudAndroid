@@ -1,7 +1,7 @@
 
 import android.app.Application
 import arch.lavaira.com.android_kotlin_mvvm.di.modules.ActivityBuilderModule
-import arch.lavaira.com.android_kotlin_mvvm.di.modules.AppModule
+import com.rncloud.android.RNCloudApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

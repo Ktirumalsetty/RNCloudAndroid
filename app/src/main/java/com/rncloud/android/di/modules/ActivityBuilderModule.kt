@@ -1,6 +1,6 @@
 package arch.lavaira.com.android_kotlin_mvvm.di.modules
 
-import arch.lavaira.com.android_kotlin_mvvm.view.activity.MainActivity
+import com.rncloud.android.view.activity.LoginActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -14,6 +14,7 @@ import dagger.android.ContributesAndroidInjector
 @Suppress("unused")
 @Module
 abstract class ActivityBuilderModule {
-    @ContributesAndroidInjector(modules = [FragmentBuilderModule::class])
-    abstract fun contributeMainActivity(): MainActivity
+//    @ContributesAndroidInjector(modules = [FragmentBuilderModule::class])
+@ContributesAndroidInjector
+abstract fun contributeLoginActivity(): LoginActivity
 }

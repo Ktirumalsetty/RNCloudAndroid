@@ -1,4 +1,3 @@
-package arch.lavaira.com.android_kotlin_mvvm.di.modules
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -13,6 +12,6 @@ import dagger.android.ContributesAndroidInjector
 @Suppress("unused")
 @Module
 abstract class FragmentBuilderModule {
-    @ContributesAndroidInjector
-    abstract fun contributeLoginFragment(): LoginFragment
+//    @ContributesAndroidInjector
+//    abstract fun contributeLoginFragment(): LoginFragment
 }

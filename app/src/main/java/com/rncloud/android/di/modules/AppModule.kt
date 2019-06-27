@@ -1,9 +1,5 @@
-package arch.lavaira.com.android_kotlin_mvvm.di.modules
 
-import arch.lavaira.com.android_kotlin_mvvm.data.remote.Api
-import arch.lavaira.com.android_kotlin_mvvm.repository.UserRepository
-import arch.lavaira.com.android_kotlin_mvvm.schedulers.SchedulerContract
-import arch.lavaira.com.android_kotlin_mvvm.schedulers.SchedulerProvider
+import com.rncloud.android.api.APIService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -20,20 +16,20 @@ import javax.inject.Singleton
 class AppModule {
     @Provides
     @Singleton
-    fun provideApi(retrofit: Retrofit) : Api {
-        return retrofit.create(Api::class.java)
+    fun provideApi(retrofit: Retrofit) : APIService {
+        return retrofit.create(APIService::class.java)
     }
 
 
-    @Provides
-    @Singleton
-    fun provideUserkRepository(api: Api, scheduler: SchedulerContract): UserRepository {
-        return UserRepository(api, scheduler)
-    }
+//    @Provides
+//    @Singleton
+//    fun provideUserkRepository(api: APIService, scheduler: SchedulerContract): UserRepository {
+//        return UserRepository(api, scheduler)
+//    }
 
-    @Provides
-    @Singleton
-    fun provideScheduler(): SchedulerContract {
-        return SchedulerProvider()
-    }
+//    @Provides
+//    @Singleton
+//    fun provideScheduler(): SchedulerContract {
+//        return SchedulerProvider()
+//    }
 }
