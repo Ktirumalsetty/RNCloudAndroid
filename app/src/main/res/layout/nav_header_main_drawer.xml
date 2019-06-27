@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/headerDrawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_horizontal_margin"
+
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+
+   <!-- <ImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:src="@drawable/img_user"
+        android:contentDescription="@string/todo" />
+    -->
+
+    <LinearLayout
+        android:id="@+id/user_profile"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello " />-->
+
+        <TextView
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+        <TextView
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            />
+        <TextView
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:id="@+id/tv_primary_fac_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="primar fac name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            />
+    </LinearLayout>
+
+
+
+
+
+       <!-- <ImageView
+            android:id="@+id/userImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            app:srcCompat="@android:drawable/sym_def_app_icon" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="Hello"
+                />
+
+            <TextView
+                android:id="@+id/userNametext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                />
+        </LinearLayout>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+    </LinearLayout>
+
+
+
+

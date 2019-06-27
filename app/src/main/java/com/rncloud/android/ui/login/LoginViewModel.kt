@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
 import com.rncloud.android.data.LoginRepository
-import com.rncloud.android.data.Result
 
 import com.rncloud.android.R
-import com.rncloud.android.data.model.LoginDataModel
+import com.rncloud.android.api.ApiResponse
+import com.rncloud.android.model.LoginDataModel
+import com.rncloud.android.model.LoginResponse
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -16,17 +17,19 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
     private val _loginResult = MutableLiveData<LoginResult>()
+    private val _loginResponseLiveData = MutableLiveData<ApiResponse<LoginResponse>>()
+    private val loginResponseLiveData : LiveData<ApiResponse<LoginResponse>> = _loginResponseLiveData
     val loginResult: LiveData<LoginResult> = _loginResult
 
     fun login(loginDataModel: LoginDataModel) {
         // can be launched in a separate asynchronous job
-        val result = loginRepository.login(loginDataModel)
 
-        if (result is Result.Success) {
-            _loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
-        } else {
-            _loginResult.value = LoginResult(error = R.string.login_failed)
-        }
+        _loginResponseLiveData.value = loginRepository.login(loginDataModel).value
+//        if (result is Result.Success) {
+//            _loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
+//        } else {
+//            _loginResult.value = LoginResult(error = R.string.login_failed)
+//        }
     }
 
     fun loginDataChanged(username: String, password: String) {

@@ -1,4 +1,4 @@
-package com.rncloud.android.data.model
+package com.rncloud.android.model
 
 data class LoginDataModel(
     val EmailId:String,
