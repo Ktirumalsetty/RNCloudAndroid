@@ -1,6 +1,6 @@
 package com.rncloud.android.data
 
-import com.rncloud.android.data.model.LoggedInUser
+import com.rncloud.android.model.LoggedInUser
 import java.io.IOException
 
 /**

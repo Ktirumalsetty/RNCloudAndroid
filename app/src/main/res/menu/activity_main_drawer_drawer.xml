@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:checked="true"
+            android:title="@string/test" />
+    </group>
+
+
+
+
+    <group
+        android:id="@+id/signout"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_signout"
+            android:icon="@android:drawable/ic_input_delete"
+            android:title="Sign out" />
+    </group>
+    <group
+        android:id="@+id/other"
+        android:checkableBehavior="none"
+        android:enabled="false">
+        <item
+            android:id="@+id/otherMenu"
+            android:title="" />
+    </group>
+
+
+</menu>

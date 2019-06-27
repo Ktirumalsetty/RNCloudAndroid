@@ -1,4 +1,4 @@
-package com.rncloud.android.data.model
+package com.rncloud.android.model
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
