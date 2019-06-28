@@ -11,7 +11,7 @@ import com.rncloud.android.api.ApiResponse
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -20,9 +20,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResponseLiveData = MutableLiveData<ApiResponse<LoginResponse>>()
     private val loginResponseLiveData : LiveData<ApiResponse<LoginResponse>> = _loginResponseLiveData
     val loginResult: LiveData<LoginResult> = _loginResult
-
     fun login(loginDataModel: LoginDataModel) {
         // can be launched in a separate asynchronous job
+        val loginRepository = LoginRepository()
 
         _loginResponseLiveData.value = loginRepository.login(loginDataModel).value
 //        if (result is Result.Success) {

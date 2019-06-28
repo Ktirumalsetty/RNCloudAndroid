@@ -2,7 +2,6 @@ package com.rncloud.android.api
 
 import androidx.lifecycle.LiveData
 import com.google.gson.GsonBuilder
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.rncloud.android.BuildConfig
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
@@ -35,7 +34,7 @@ interface APIService {
 
             val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                 .client(okHttpClientBuilder.build())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create(gson)).build()
 
             return retrofit.create(APIService::class.java)

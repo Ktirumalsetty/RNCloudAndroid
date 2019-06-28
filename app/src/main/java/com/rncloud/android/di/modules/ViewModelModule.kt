@@ -1,6 +1,7 @@
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.rncloud.android.factory.ViewModelFactory
 import com.rncloud.android.ui.login.LoginViewModel
 import dagger.Binds
 import dagger.Module

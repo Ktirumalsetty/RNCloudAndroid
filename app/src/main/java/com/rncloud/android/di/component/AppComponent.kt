@@ -1,10 +1,9 @@
-
 import android.app.Application
-import arch.lavaira.com.android_kotlin_mvvm.di.modules.ActivityBuilderModule
 import com.rncloud.android.RNCloudApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 /****
@@ -14,10 +13,11 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        AndroidInjectionModule::class,
-        AppModule::class,
+//        AppModule::class,
         NetworkModule::class,
-        ActivityBuilderModule::class]
+        ActivityBuilderModule::class,
+        AndroidSupportInjectionModule::class
+    ]
 )
 interface AppComponent {
     @Component.Builder

@@ -1,4 +1,5 @@
 
+import com.rncloud.android.api.APIService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -54,5 +55,11 @@ class NetworkModule {
     @Singleton
     fun provideLogging(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideApiService(retrofit: Retrofit): APIService {
+        return retrofit.create(APIService::class.java)
     }
 }

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import arch.lavaira.com.android_kotlin_mvvm.view.listeners.BackButtonHandlerListener
 import arch.lavaira.com.android_kotlin_mvvm.view.listeners.BackPressListener
+import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import java.lang.ref.WeakReference
@@ -51,6 +52,7 @@ abstract class BaseActivity<V : ViewModel, D : ViewDataBinding> : AppCompatActiv
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, layoutRes)
         dataBinding.setLifecycleOwner(this)
