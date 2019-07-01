@@ -5,6 +5,17 @@
     <!--<color name="colorAccent">#D81B60</color>-->
     <color name="colorAccent">#C75591</color>
 
+    <!-- New MaterialComponents attributes. -->
+    <color name="primary_variant_color">#55BCDD</color>
+    <color name="secondary_variant_color">#55BCDD</color>
+    <!--<color name="surface_color">#ffffff</color>-->
+    <!--<color name="color_on_primary">#C75591</color>-->
+    <!--<color name="color_on_secondary">#C75591</color>-->
+    <!--<color name="color_on_background">#C75591</color>-->
+    <!--<color name="color_on_error">#C75591</color>-->
+    <!--<color name="color_on_surface">#C75591</color>-->
+    <!--<color name="mtrl_scrim_color">#C75591</color>-->
+
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#D3D3D3</color>

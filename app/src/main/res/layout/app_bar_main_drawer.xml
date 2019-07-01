@@ -11,7 +11,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <FrameLayout
             android:id="@+id/toolbar_container"
@@ -46,12 +46,12 @@
                 />-->
 
         </androidx.appcompat.widget.Toolbar>
-            <com.miguelcatalan.materialsearchview.MaterialSearchView
-                android:textColorHint="@color/colorDarkGray"
-                android:id="@+id/search_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible" />
+            <!--<com.miguelcatalan.materialsearchview.MaterialSearchView-->
+                <!--android:textColorHint="@color/colorDarkGray"-->
+                <!--android:id="@+id/search_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:visibility="visible" />-->
         </FrameLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

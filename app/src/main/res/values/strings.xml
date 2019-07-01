@@ -14,8 +14,14 @@
     <string name="prompt_cnf_password">Confirm Password</string>
     <string name="action_next">Next</string>
     <string name="title_activity_main_bottom_navigation_drawer">Main</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Schedule</string>
+    <string name="title_jobs">Jobs</string>
+    <string name="title_profile">Profile</string>
     <string name="test">Test</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_sign_up_form">Create an Account</string>
+    <string name="prompt_mobile_no">Mobile</string>
+    <string name="forgot_password">Forgot Password?</string>
 </resources>

@@ -1,22 +1,15 @@
 package com.rncloud.android.view.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rncloud.android.databinding.ActivityLoginBinding
-import com.rncloud.android.model.LoginDataModel
-import com.rncloud.android.ui.login.LoginViewModel
-import com.rncloud.android.view.activity.base.BaseActivity
-import android.R.attr.data
+import com.rncloud.android.viewmodel.LoginViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.rncloud.android.R
-import com.rncloud.android.factory.ViewModelFactory
-import dagger.android.AndroidInjection
-import javax.inject.Inject
 
 class LoginActivity: AppCompatActivity() {
 
@@ -57,20 +50,21 @@ class LoginActivity: AppCompatActivity() {
          * to call this method in order to inject the
          * ViewModelFactory into our Activity
          * */
-        AndroidInjection.inject(this)
+//        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         initialiseView()
         initialiseViewModel()
         binding.login.setOnClickListener(View.OnClickListener {
 
+            if (isLoginValid())
             startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
 
 //            viewModel.login(LoginDataModel(dataBinding.email.text.toString(),dataBinding.password.text.toString()))
         })
 
         binding.signup.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this@LoginActivity,SignUpActivity::class.java))
+            startActivity(Intent(this@LoginActivity,SignUpFormActivity::class.java))
         })
     }
 
@@ -117,5 +111,22 @@ class LoginActivity: AppCompatActivity() {
 //
 //        /* Fetch movies list  */
 //        movieListViewModel.loadMoreMovies()
+    }
+
+    @SuppressLint("NewApi")
+    fun isLoginValid():Boolean{
+        if(binding.email.text!!.isEmpty()){
+            binding.email.error = "Email is Required"
+            binding.email.focusable = View.FOCUSABLE
+            return false
+        }else if (binding.password.text!!.isEmpty()){
+            binding.password.error = "Password is Required"
+            binding.password.focusable = View.FOCUSABLE
+
+            return false
+        }else{
+            return true
+        }
+
     }
 }

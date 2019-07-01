@@ -1,4 +1,4 @@
-package com.rncloud.android.ui.login
+package com.rncloud.android.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,6 +10,8 @@ import com.rncloud.android.R
 import com.rncloud.android.api.ApiResponse
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
+import com.rncloud.android.ui.login.LoginFormState
+import com.rncloud.android.ui.login.LoginResult
 
 class LoginViewModel : ViewModel() {
 

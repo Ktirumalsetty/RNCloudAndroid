@@ -11,8 +11,13 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
+                android:name=".view.activity.SignUpFormActivity"
+                android:label="@string/title_activity_sign_up_form"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
                 android:name=".view.activity.MainBottomNavigationDrawerActivity"
-                android:label="@string/title_activity_main_bottom_navigation_drawer">
+               >
         </activity>
         <activity android:name=".view.activity.SignUpActivity">
         </activity>
