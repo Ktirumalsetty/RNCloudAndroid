@@ -31,10 +31,16 @@ interface APIService {
                 okHttpClientBuilder.addInterceptor(logging)
             }
             val gson = GsonBuilder().setLenient().create()
+//            val retrofit = Retrofit.Builder()
+//                .baseUrl("YOUR URL")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(LiveDataCallAdapterFactory())
+//                .build()
 
             val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                 .client(okHttpClientBuilder.build())
 //                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create(gson)).build()
 
             return retrofit.create(APIService::class.java)

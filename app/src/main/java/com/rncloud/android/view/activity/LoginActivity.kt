@@ -3,15 +3,31 @@ package com.rncloud.android.view.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rncloud.android.databinding.ActivityLoginBinding
 import com.rncloud.android.viewmodel.LoginViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.Observable
+import androidx.lifecycle.Observer
 import com.rncloud.android.R
+import com.rncloud.android.api.APIService
+import com.rncloud.android.model.LoginDataModel
+import com.rncloud.android.model.LoginResponse
+import com.rncloud.android.view.activity.base.BaseAppCompatActivity
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.include_progress_overlay.view.*
 
-class LoginActivity: AppCompatActivity() {
+class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
+
+    override fun getLayoutRes(): Int {
+        return R.layout.activity_login
+    }
+
+//    override val layoutRes: Int
+//        get() = R.layout.activity_login
 
 //    override val layoutRes: Int
 //        get() = R.layout.activity_login
@@ -41,15 +57,10 @@ class LoginActivity: AppCompatActivity() {
     /*
      * I am using DataBinding
      * */
-    private lateinit var binding: ActivityLoginBinding
+//    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        /*
-         * Step 2: Remember in our ActivityModule, we
-         * defined MainActivity injection? So we need
-         * to call this method in order to inject the
-         * ViewModelFactory into our Activity
-         * */
+
 //        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
@@ -57,10 +68,21 @@ class LoginActivity: AppCompatActivity() {
         initialiseViewModel()
         binding.login.setOnClickListener(View.OnClickListener {
 
-            if (isLoginValid())
-            startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
+            if (isLoginValid()){
+                showProgress()
+                APIService.getInstance().userLogin(LoginDataModel(binding.email.text.toString(),binding.password.text.toString())).observe(this,
+                    Observer {
+                        hideProgress()
+                        Log.d(TAG(),"getLoginRespLiveData"+it)
+                        if (it!!.isSuccessful) {
+                            startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
+                        } else {
 
-//            viewModel.login(LoginDataModel(dataBinding.email.text.toString(),dataBinding.password.text.toString()))
+                        }
+                    })
+//                loginViewModel.login(LoginDataModel(binding.email.text.toString(),binding.password.text.toString()))
+            }
+
         })
 
         binding.signup.setOnClickListener(View.OnClickListener {
@@ -72,7 +94,8 @@ class LoginActivity: AppCompatActivity() {
     * Initialising the View using Data Binding
     * */
     private fun initialiseView() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        bindView(getLayoutRes())
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
 //        moviesListAdapter = MoviesListAdapter(this)
 //        binding.moviesList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
@@ -98,6 +121,27 @@ class LoginActivity: AppCompatActivity() {
 //        loginViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java!!)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
+//        loginViewModel.getLoginRespLiveData().observe(this, Observer { resource ->
+//
+//            Log.d(TAG(),"getLoginRespLiveData"+resource)
+//            if (resource!!.isSuccessful) {
+//
+//            } else if (resource.body != null) {
+//                startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
+//
+//            } else
+//                startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
+//        })
+//        loginViewModel.getLoginRespLiveData().observe(this,{
+//            hideProgress()
+//            if(it.isSuccessful){
+//                val loginResponse: LoginResponse? = it.body
+//                Log.d(TAG(),loginResponse.toString())
+//            }else{
+//                startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
+//            }
+//        })
+
 //        movieListViewModel.getMoviesLiveData().observe(this, { resource ->
 //            if (resource.isLoading()) {
 //                displayLoader()
@@ -117,11 +161,13 @@ class LoginActivity: AppCompatActivity() {
     fun isLoginValid():Boolean{
         if(binding.email.text!!.isEmpty()){
             binding.email.error = "Email is Required"
-            binding.email.focusable = View.FOCUSABLE
+//            binding.emailTextInputLayout.focusable = View.FOCUSABLE
+            binding.emailTextInputLayout.requestFocus()
             return false
         }else if (binding.password.text!!.isEmpty()){
             binding.password.error = "Password is Required"
-            binding.password.focusable = View.FOCUSABLE
+//            binding.password.focusable = View.FOCUSABLE
+            binding.password.requestFocus()
 
             return false
         }else{
@@ -129,4 +175,17 @@ class LoginActivity: AppCompatActivity() {
         }
 
     }
+
+    private fun showProgress() {
+        binding.included.progress.visibility = View.VISIBLE
+//        binding.progressBarHolder.visibility = View.VISIBLE
+    }
+
+    private fun hideProgress() {
+        binding.included.progress.visibility = View.GONE
+//        binding.progressBarHolder.visibility = View.GONE
+
+    }
+
+
 }

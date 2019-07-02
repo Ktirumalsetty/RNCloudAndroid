@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 class LoginRepository () {
 
-    @Inject
-    internal lateinit var apiService:APIService
+//    @Inject
+//    internal lateinit var apiService:APIService
 //    // in-memory cache of the loggedInUser object
 //    var user: LoggedInUser? = null
 //        private set
@@ -38,7 +38,7 @@ class LoginRepository () {
     fun login(loginDataModel: LoginDataModel): LiveData<ApiResponse<LoginResponse>> {
         // handle login
 //        val loginResponse = MutableLiveData<LoginResponse>()
-        return apiService.userLogin(loginDataModel)
+        return APIService.getInstance().userLogin(loginDataModel)
 
     }
 

@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
+import androidx.lifecycle.Observer
 import com.rncloud.android.data.LoginRepository
 
 import com.rncloud.android.R
+import com.rncloud.android.api.APIService
 import com.rncloud.android.api.ApiResponse
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
@@ -20,13 +22,18 @@ class LoginViewModel : ViewModel() {
 
     private val _loginResult = MutableLiveData<LoginResult>()
     private val _loginResponseLiveData = MutableLiveData<ApiResponse<LoginResponse>>()
-    private val loginResponseLiveData : LiveData<ApiResponse<LoginResponse>> = _loginResponseLiveData
+//    private val loginResponseLiveData : LiveData<ApiResponse<LoginResponse>> = _loginResponseLiveData
+    private val loginResponseLiveData = MutableLiveData<ApiResponse<LoginResponse>>()
     val loginResult: LiveData<LoginResult> = _loginResult
     fun login(loginDataModel: LoginDataModel) {
         // can be launched in a separate asynchronous job
         val loginRepository = LoginRepository()
 
-        _loginResponseLiveData.value = loginRepository.login(loginDataModel).value
+//        loginRepository.login(loginDataModel)
+        APIService.getInstance().userLogin(loginDataModel)
+//        loginResponseLiveData.value = loginRepository.login(loginDataModel).observe(object : LiveData {
+//
+//        })
 //        if (result is Result.Success) {
 //            _loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
 //        } else {
@@ -57,4 +64,6 @@ class LoginViewModel : ViewModel() {
     private fun isPasswordValid(password: String): Boolean {
         return password.length > 5;
     }
+
+    fun getLoginRespLiveData() = loginResponseLiveData
 }
