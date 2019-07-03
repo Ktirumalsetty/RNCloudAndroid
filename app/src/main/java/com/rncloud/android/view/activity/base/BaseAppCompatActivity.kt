@@ -7,8 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.annotation.LayoutRes
 
-
-
 abstract class BaseAppCompatActivity<DB:ViewDataBinding>:AppCompatActivity() {
 
      protected var TAG: String? = null

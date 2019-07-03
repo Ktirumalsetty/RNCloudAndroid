@@ -23,14 +23,15 @@ class LoginViewModel : ViewModel() {
     private val _loginResult = MutableLiveData<LoginResult>()
     private val _loginResponseLiveData = MutableLiveData<ApiResponse<LoginResponse>>()
 //    private val loginResponseLiveData : LiveData<ApiResponse<LoginResponse>> = _loginResponseLiveData
-    private val loginResponseLiveData = MutableLiveData<ApiResponse<LoginResponse>>()
+    private var loginResponseLiveData:LiveData<ApiResponse<LoginResponse>> = _loginResponseLiveData
     val loginResult: LiveData<LoginResult> = _loginResult
+
     fun login(loginDataModel: LoginDataModel) {
         // can be launched in a separate asynchronous job
         val loginRepository = LoginRepository()
 
 //        loginRepository.login(loginDataModel)
-        APIService.getInstance().userLogin(loginDataModel)
+         loginResponseLiveData = APIService.getInstance().userLogin(loginDataModel)
 //        loginResponseLiveData.value = loginRepository.login(loginDataModel).observe(object : LiveData {
 //
 //        })

@@ -30,7 +30,7 @@ interface APIService {
                 logging.level = HttpLoggingInterceptor.Level.BASIC
                 okHttpClientBuilder.addInterceptor(logging)
             }
-            val gson = GsonBuilder().setLenient().create()
+//            val gson = GsonBuilder().setLenient().create()
 //            val retrofit = Retrofit.Builder()
 //                .baseUrl("YOUR URL")
 //                .addConverterFactory(GsonConverterFactory.create())
@@ -41,7 +41,7 @@ interface APIService {
                 .client(okHttpClientBuilder.build())
 //                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .addConverterFactory(GsonConverterFactory.create(gson)).build()
+                .addConverterFactory(GsonConverterFactory.create()).build()
 
             return retrofit.create(APIService::class.java)
 

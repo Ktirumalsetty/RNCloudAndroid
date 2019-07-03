@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rncloud.android.databinding.ActivityLoginBinding
 import com.rncloud.android.viewmodel.LoginViewModel
@@ -77,7 +78,7 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
                         if (it!!.isSuccessful) {
                             startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
                         } else {
-
+                            Toast.makeText(this,"some thing went wrong",Toast.LENGTH_SHORT).show()
                         }
                     })
 //                loginViewModel.login(LoginDataModel(binding.email.text.toString(),binding.password.text.toString()))
@@ -125,12 +126,10 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
 //
 //            Log.d(TAG(),"getLoginRespLiveData"+resource)
 //            if (resource!!.isSuccessful) {
-//
-//            } else if (resource.body != null) {
 //                startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
-//
-//            } else
-//                startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
+//            } else {
+//                Toast.makeText(this,"somethingwent wrong",Toast.LENGTH_SHORT).show()
+//            }
 //        })
 //        loginViewModel.getLoginRespLiveData().observe(this,{
 //            hideProgress()
