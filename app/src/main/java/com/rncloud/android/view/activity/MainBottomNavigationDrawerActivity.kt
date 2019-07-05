@@ -29,7 +29,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         val id = item.itemId
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_my_preferences) {
 //            navigateToSettingsActivity()
         } else if (id == R.id.nav_signout) {
 //            showLogoutAlert()

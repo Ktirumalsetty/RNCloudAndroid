@@ -7,12 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 
 import com.rncloud.android.R
 import com.rncloud.android.databinding.JobsFragmentBinding
 import com.rncloud.android.databinding.ProfileFragmentBinding
+import com.rncloud.android.view.activity.MainBottomNavigationDrawerActivity
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = ProfileFragment()
@@ -33,7 +36,47 @@ class ProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        binding.viewpager.adapter =ProfileFragmentPagerAdapter((activity as MainBottomNavigationDrawerActivity).supportFragmentManager)
+        binding.tablayout.setupWithViewPager(binding.viewpager)
     }
 
+
+
+    class ProfileFragmentPagerAdapter constructor(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager){
+
+
+        override fun getItem(position: Int): Fragment {
+            var fragment: Fragment = Fragment()
+            when (position) {
+                0 -> fragment = ScheduleFragment.newInstance()
+                1 -> fragment = ScheduleFragment.newInstance()
+                2 -> fragment = ScheduleFragment.newInstance()
+                3 -> fragment = ScheduleFragment.newInstance()
+                4 -> fragment = ScheduleFragment.newInstance()
+                5 -> fragment = ScheduleFragment.newInstance()
+            }
+
+            return fragment
+
+        }
+
+        override fun getCount(): Int {
+            return 6
+        }
+
+        override fun getPageTitle(position: Int): CharSequence? {
+            var title:String =""
+            when (position) {
+                0 -> title ="Profile Info"
+                1 -> title ="Licences"
+                2 -> title ="Certifications"
+                3 -> title ="Education"
+                4 -> title ="Employement"
+                5 -> title ="Medical Documents"
+            }
+        return title
+        }
+
+    }
 }

@@ -2,6 +2,7 @@ package com.rncloud.android.view.fragment
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import androidx.databinding.DataBindingUtil
 import com.rncloud.android.R
 import com.rncloud.android.databinding.ScheduleFragmentBinding
 
-class ScheduleFragment : Fragment() {
+class ScheduleFragment : BaseFragment() {
 
     lateinit var binding : ScheduleFragmentBinding
 
@@ -26,6 +27,8 @@ class ScheduleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 //        return inflater.inflate(R.layout.schedule_fragment, container, false)
+        Log.d(TAG(),"onCreateView")
+
         binding = DataBindingUtil.inflate(inflater, R.layout.schedule_fragment, container, false)
         return binding.root
     }

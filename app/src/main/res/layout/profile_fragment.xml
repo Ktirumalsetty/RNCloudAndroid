@@ -21,20 +21,45 @@
         <!--&gt;-->
 
         <!--</androidx.recyclerview.widget.RecyclerView>-->
-
-        <TextView
-                android:id="@+id/tv_no_results"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No Profile"
-                android:textColor="@color/colorBlack"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                app:layout_constraintTop_toTopOf="parent"
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-        <include layout="@layout/include_progress_overlay"></include>
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabIndicatorColor="@color/colorAccent"
+                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                    app:tabGravity="center"
+                    app:tabMode="auto"/>
+
+            <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"/>
+
+        </LinearLayout>
+
+        <!--<TextView-->
+                <!--android:id="@+id/tv_no_results"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="No Profile"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"/>-->
+
+        <!--<include layout="@layout/include_progress_overlay"></include>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
