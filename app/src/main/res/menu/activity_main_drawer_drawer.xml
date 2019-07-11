@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="none">
         <item
-            android:id="@+id/nav_my_preferences"
-            android:checked="true"
-            android:title="@string/my_preferences" />
+                android:id="@+id/nav_my_preferences"
+                android:title="@string/my_preferences"
+                android:icon="@drawable/ic_person_white_24dp"
+                />
     </group>
-
-
+    <group android:checkableBehavior="none">
+        <item
+                android:id="@+id/nav_skill_assessment"
+                android:title="@string/skill_assessment"
+                android:icon="@drawable/ic_star_white_24dp"
+                />
+    </group>
+    <group android:checkableBehavior="none">
+        <item
+                android:id="@+id/nav_my_registries"
+                android:title="@string/my_registries"
+                android:icon="@drawable/ic_widgets_white_24dp"
+                />
+    </group>
 
 
     <group
-        android:id="@+id/signout"
-        android:checkableBehavior="none">
+            android:id="@+id/signout"
+            android:checkableBehavior="none">
         <item
-            android:id="@+id/nav_signout"
-            android:icon="@android:drawable/ic_input_delete"
-            android:title="Sign out" />
+                android:id="@+id/nav_signout"
+                android:icon="@android:drawable/ic_input_delete"
+                android:title="Sign out"/>
     </group>
-    <group
-        android:id="@+id/other"
-        android:checkableBehavior="none"
-        android:enabled="false">
-        <item
-            android:id="@+id/otherMenu"
-            android:title="" />
-    </group>
+    <!--<group-->
+    <!--android:id="@+id/other"-->
+    <!--android:checkableBehavior="none"-->
+    <!--android:enabled="false">-->
+    <!--<item-->
+    <!--android:id="@+id/otherMenu"-->
+    <!--android:title=""/>-->
+    <!--</group>-->
 
 
 </menu>

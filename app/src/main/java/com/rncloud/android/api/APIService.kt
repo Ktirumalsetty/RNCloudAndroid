@@ -18,7 +18,7 @@ interface APIService {
 
     companion object Factory {
 
-        val BASE_URL = "https://kryptostext-dev.azurewebsites.net/api/"
+        val BASE_URL = "https://kryptostext-kryptostextprodtest.azurewebsites.net/api/"
 
         fun getInstance(): APIService {
             val okHttpClientBuilder = Builder()

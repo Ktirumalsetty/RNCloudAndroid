@@ -25,4 +25,6 @@
     <string name="prompt_mobile_no">Mobile</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="my_preferences">My Preferences</string>
+    <string name="skill_assessment">Skill Assesment</string>
+    <string name="my_registries">My Registries</string>
 </resources>
