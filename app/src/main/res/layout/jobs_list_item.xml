@@ -113,6 +113,7 @@
             app:layout_constraintStart_toStartOf="@+id/tv_location"
             android:layout_marginTop="10dp"
             android:padding="5dp"
+            style="@style/Widget.MaterialComponents.CardView"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintEnd_toStartOf="@+id/rl_duration_background">
 

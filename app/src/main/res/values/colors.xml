@@ -22,4 +22,8 @@
     <color name="colorLightGray">#EDEDED</color>
     <color name="colorDarkGray">#b3aaaa</color>
     <color name="colorRed">#ff0000</color>
+    <color name="colorYellow">#DAB97A</color>
+    <color name="colorPink">#F795D6</color>
+    <color name="colorGreen">#77BA54</color>
+    <color name="colorViolet">#BCBBDA</color>
 </resources>
