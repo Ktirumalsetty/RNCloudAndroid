@@ -68,7 +68,7 @@ class ProfileFragment : BaseFragment() {
         override fun getPageTitle(position: Int): CharSequence? {
             var title:String =""
             when (position) {
-                0 -> title ="Profile Info"
+                0 -> title ="Personal Info"
                 1 -> title ="Licences"
                 2 -> title ="Certifications"
                 3 -> title ="Education"

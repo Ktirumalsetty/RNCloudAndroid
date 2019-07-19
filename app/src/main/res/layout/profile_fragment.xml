@@ -37,7 +37,7 @@
                     app:tabIndicatorColor="@color/colorAccent"
                     app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
                     app:tabGravity="center"
-                    app:tabMode="auto"/>
+                    app:tabMode="scrollable"/>
 
             <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager"
