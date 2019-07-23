@@ -79,6 +79,8 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
                             startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
                         } else {
                             Toast.makeText(this,"some thing went wrong",Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
+
                         }
                     })
 //                loginViewModel.login(LoginDataModel(binding.email.text.toString(),binding.password.text.toString()))

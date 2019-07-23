@@ -49,7 +49,7 @@ class ProfileFragment : BaseFragment() {
         override fun getItem(position: Int): Fragment {
             var fragment: Fragment = Fragment()
             when (position) {
-                0 -> fragment = ScheduleFragment.newInstance()
+                0 -> fragment = PersonalInfoFragment.newInstance()
                 1 -> fragment = ScheduleFragment.newInstance()
                 2 -> fragment = ScheduleFragment.newInstance()
                 3 -> fragment = ScheduleFragment.newInstance()

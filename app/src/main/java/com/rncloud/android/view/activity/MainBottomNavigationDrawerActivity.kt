@@ -24,7 +24,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 
     private lateinit var binding: ActivityMainBottomNavigationDrawerBinding
 
-    private lateinit var textMessage: TextView
+//    private lateinit var textMessage: TextView
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
@@ -69,7 +69,6 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
         initialiseViewModel()
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
 
-        textMessage = findViewById(R.id.message)
         bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
