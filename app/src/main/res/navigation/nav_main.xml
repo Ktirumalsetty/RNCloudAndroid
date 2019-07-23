@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_main.xml"
+            app:startDestination="@id/navigation_home">
+
+    <fragment
+            android:id="@+id/navigation_home"
+            android:name="com.rncloud.android.view.fragment.ScheduleFragment"
+            android:label="ScheduleFragment"/>
+    <fragment
+            android:id="@+id/navigation_jobs"
+            android:name="com.rncloud.android.view.fragment.JobsFragment"
+            android:label="JobsFragment"/>
+    <fragment
+            android:id="@+id/navigation_profile"
+            android:name="com.rncloud.android.view.fragment.ProfileFragment"
+            android:label="ProfileFragment"/>
+</navigation>

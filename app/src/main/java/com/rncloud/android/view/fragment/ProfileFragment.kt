@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 
 import com.rncloud.android.R
 import com.rncloud.android.databinding.JobsFragmentBinding
@@ -76,6 +77,10 @@ class ProfileFragment : BaseFragment() {
                 5 -> title ="Medical Documents"
             }
         return title
+        }
+
+        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+            super.destroyItem(container, position, `object`)
         }
 
     }

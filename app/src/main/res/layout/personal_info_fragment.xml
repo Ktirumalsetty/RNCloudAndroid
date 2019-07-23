@@ -591,6 +591,7 @@
                 app:layout_constraintTop_toTopOf="@+id/tv_attached_resume"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_resume_file_name"
                 android:background="@drawable/driving_licence_border"
+                android:layout_marginBottom="10dp"
 
                 >
 
@@ -629,6 +630,7 @@
                 android:text="Resume_Android.doc"
                 android:layout_marginTop="5dp"
                 android:paddingLeft="20dp"
+
                 app:layout_constraintTop_toBottomOf="@+id/tv_attached_resume"
                 app:layout_constraintStart_toStartOf="parent"
                 android:paddingBottom="10dp"

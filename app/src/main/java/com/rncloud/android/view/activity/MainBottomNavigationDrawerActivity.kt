@@ -13,6 +13,10 @@ import com.google.android.material.navigation.NavigationView
 import com.rncloud.android.databinding.ActivityMainBottomNavigationDrawerBinding
 
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.rncloud.android.view.fragment.JobsFragment
 import com.rncloud.android.view.fragment.ProfileFragment
 
@@ -67,10 +71,19 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 //        setContentView(R.layout.activity_main_bottom_navigation_drawer)
         initialiseView()
         initialiseViewModel()
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+//        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
+//        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+//        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+
+        val navController = findNavController(R.id.mainNavFragment)
+
+        // Set up ActionBar
+//        setSupportActionBar(toolbar)
+//        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+
+        // Set up navigation menu
+        binding.included.bottomNavView.setupWithNavController(navController)
 
 
     }
@@ -136,13 +149,13 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 
     private fun loadFragment(fragment: Fragment?): Boolean {
         //switching fragment
-        if (fragment != null) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container, fragment!!)
-                .commit()
-            return true
-        }
+//        if (fragment != null) {
+//            supportFragmentManager
+//                .beginTransaction()
+//                .replace(R.id.fragment_container, fragment!!)
+//                .commit()
+//            return true
+//        }
         return false
     }
 }
