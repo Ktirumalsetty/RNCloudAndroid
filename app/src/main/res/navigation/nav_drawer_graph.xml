@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_drawer_graph"
+            app:startDestination="@id/nav_my_preferences">
+
+    <activity
+            android:id="@+id/nav_my_preferences"
+            android:name="com.rncloud.android.view.activity.MyPreferencesActivity"
+            android:label="activity_my_preferences"
+            tools:layout="@layout/activity_my_preferences"/>
+</navigation>

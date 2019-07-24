@@ -100,6 +100,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
     * */
     private fun initialiseView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_bottom_navigation_drawer)
+        binding.navView.setNavigationItemSelectedListener (this)
 //        initToolbar()
 //        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
 //        val toggle = ActionBarDrawerToggle(
