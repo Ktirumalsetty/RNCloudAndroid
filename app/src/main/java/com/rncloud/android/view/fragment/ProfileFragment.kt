@@ -2,6 +2,7 @@ package com.rncloud.android.view.fragment
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,21 +31,24 @@ class ProfileFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d(TAG(),"onCreateView")
         binding = DataBindingUtil.inflate(inflater, R.layout.profile_fragment, container, false)
+        binding.viewpager.adapter =ProfileFragmentPagerAdapter((activity as MainBottomNavigationDrawerActivity).supportFragmentManager)
+        binding.tablayout.setupWithViewPager(binding.viewpager)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        Log.d(TAG(),"onActivityCreated")
         viewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
 
-        binding.viewpager.adapter =ProfileFragmentPagerAdapter((activity as MainBottomNavigationDrawerActivity).supportFragmentManager)
-        binding.tablayout.setupWithViewPager(binding.viewpager)
+
     }
 
 
 
-    class ProfileFragmentPagerAdapter constructor(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager){
+    class ProfileFragmentPagerAdapter constructor(fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager){
 
 
         override fun getItem(position: Int): Fragment {
@@ -79,9 +83,9 @@ class ProfileFragment : BaseFragment() {
         return title
         }
 
-        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-            super.destroyItem(container, position, `object`)
-        }
+//        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+//            super.destroyItem(container, position, `object`)
+//        }
 
     }
 }

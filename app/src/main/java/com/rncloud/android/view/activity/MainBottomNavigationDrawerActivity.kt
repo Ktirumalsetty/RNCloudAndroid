@@ -21,7 +21,7 @@ import com.rncloud.android.view.fragment.JobsFragment
 import com.rncloud.android.view.fragment.ProfileFragment
 
 import com.rncloud.android.view.fragment.ScheduleFragment
-import kotlinx.android.synthetic.main.app_bar_main_drawer.*
+
 
 
 class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
@@ -79,8 +79,10 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
         val navController = findNavController(R.id.mainNavFragment)
 
         // Set up ActionBar
-//        setSupportActionBar(toolbar)
-//        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(false)
+        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
 
         // Set up navigation menu
         binding.included.bottomNavView.setupWithNavController(navController)
@@ -88,18 +90,23 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(
+            Navigation.findNavController(this, R.id.mainNavFragment), binding.drawerLayout)
+    }
+
     /*
     * Initialising the View using Data Binding
     * */
     private fun initialiseView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_bottom_navigation_drawer)
-        initToolbar()
+//        initToolbar()
 //        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
-        val toggle = ActionBarDrawerToggle(
-            this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
-        )
-        binding.drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+//        val toggle = ActionBarDrawerToggle(
+//            this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+//        )
+//        binding.drawerLayout.addDrawerListener(toggle)
+//        toggle.syncState()
 //        moviesListAdapter = MoviesListAdapter(this)
 //        binding.moviesList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
 //        binding.moviesList.adapter = moviesListAdapter
