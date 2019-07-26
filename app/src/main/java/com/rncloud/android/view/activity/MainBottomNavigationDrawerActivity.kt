@@ -15,8 +15,11 @@ import com.rncloud.android.databinding.ActivityMainBottomNavigationDrawerBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.plusAssign
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.rncloud.android.common.KeepStateNavigator
 import com.rncloud.android.view.fragment.JobsFragment
 import com.rncloud.android.view.fragment.ProfileFragment
 
@@ -28,6 +31,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 
     private lateinit var binding: ActivityMainBottomNavigationDrawerBinding
 
+    val navController by lazy { findNavController(R.id.nav_host_fragment) }
 //    private lateinit var textMessage: TextView
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -76,14 +80,24 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 //        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 //        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
-        val navController = findNavController(R.id.mainNavFragment)
+//        val navController = findNavController(R.id.mainNavFragment)
 
         // Set up ActionBar
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(false)
-        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
 
+
+        // get fragment
+//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!
+        // setup custom navigator
+//        val navigator = KeepStateNavigator(this, navHostFragment.childFragmentManager, R.id.nav_host_fragment)
+//        navController.navigatorProvider += navigator
+
+        // set navigation graph
+//        navController.setGraph(R.navigation.nav_main)
+
+        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
         // Set up navigation menu
         binding.included.bottomNavView.setupWithNavController(navController)
 
@@ -91,8 +105,10 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(
-            Navigation.findNavController(this, R.id.mainNavFragment), binding.drawerLayout)
+//        return NavigationUI.navigateUp(Navigation.findNavController(this, R.id.mainNavFragment), binding.drawerLayout)
+
+        return navController.navigateUp(binding.drawerLayout)
+
     }
 
     /*
@@ -165,5 +181,13 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 //            return true
 //        }
         return false
+    }
+
+    override fun onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
     }
 }

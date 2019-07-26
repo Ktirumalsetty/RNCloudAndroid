@@ -34,6 +34,7 @@ class ProfileFragment : BaseFragment() {
         Log.d(TAG(),"onCreateView")
         binding = DataBindingUtil.inflate(inflater, R.layout.profile_fragment, container, false)
         binding.viewpager.adapter =ProfileFragmentPagerAdapter((activity as MainBottomNavigationDrawerActivity).supportFragmentManager)
+        binding.viewpager.offscreenPageLimit = 6
         binding.tablayout.setupWithViewPager(binding.viewpager)
         return binding.root
     }
@@ -48,7 +49,7 @@ class ProfileFragment : BaseFragment() {
 
 
 
-    class ProfileFragmentPagerAdapter constructor(fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager){
+    class ProfileFragmentPagerAdapter constructor(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager){
 
 
         override fun getItem(position: Int): Fragment {
