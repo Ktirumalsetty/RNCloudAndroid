@@ -18,7 +18,8 @@ interface APIService {
 
     companion object Factory {
 
-        val BASE_URL = "https://kryptostext-kryptostextprodtest.azurewebsites.net/api/"
+//        val BASE_URL = "https://kryptostext-kryptostextprodtest.azurewebsites.net/api/"
+        val BASE_URL = "http://104.211.61.196:7555/rncapi/"
 
         fun getInstance(): APIService {
             val okHttpClientBuilder = Builder()
@@ -49,7 +50,7 @@ interface APIService {
     }
 
 
-    @POST("LoginForgotPass/UserValidationCallForLogin")
+    @POST("Login/xLoginRequest")
 //    fun userLogin(@Field("username")username:String, @Field("userpass")userpass:String) : Call<LoginResponse>
 //    fun userLogin(@Body loginDataModel: LoginDataModel): Deferred<Response<LoginResponse>>
     fun userLogin(@Body loginDataModel: LoginDataModel): LiveData<ApiResponse<LoginResponse>>

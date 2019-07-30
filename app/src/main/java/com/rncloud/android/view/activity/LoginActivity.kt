@@ -71,7 +71,7 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
 
             if (isLoginValid()){
                 showProgress()
-                APIService.getInstance().userLogin(LoginDataModel(binding.email.text.toString(),binding.password.text.toString())).observe(this,
+                APIService.getInstance().userLogin(LoginDataModel(binding.email.text.toString())).observe(this,
                     Observer {
                         hideProgress()
                         Log.d(TAG(),"getLoginRespLiveData"+it)
