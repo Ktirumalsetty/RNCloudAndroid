@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView
 import com.rncloud.android.databinding.ActivityMainBottomNavigationDrawerBinding
 
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.plusAssign
@@ -24,14 +25,16 @@ import com.rncloud.android.view.fragment.JobsFragment
 import com.rncloud.android.view.fragment.ProfileFragment
 
 import com.rncloud.android.view.fragment.ScheduleFragment
-
+import com.rncloud.android.viewmodel.MainBottomNavigationDrawerViewModel
 
 
 class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBottomNavigationDrawerBinding
 
-    val navController by lazy { findNavController(R.id.nav_host_fragment) }
+    private lateinit var viewModel:MainBottomNavigationDrawerViewModel
+
+//    val navController by lazy { findNavController(R.id.nav_host_fragment) }
 //    private lateinit var textMessage: TextView
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -50,24 +53,24 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 
-        var fragment: Fragment? = null
-
-        when (item.itemId) {
-            R.id.navigation_home -> {
-                fragment = ScheduleFragment.newInstance()
-                binding.toolbar.title = "Schedule"
-            }
-            R.id.navigation_jobs -> {
-                fragment = JobsFragment.newInstance()
-                binding.toolbar.title = "Jobs"
-            }
-            R.id.navigation_profile -> {
-                fragment = ProfileFragment.newInstance()
-                binding.toolbar.title = "Profile"
-
-            }
-        }
-        loadFragment(fragment)
+//        var fragment: Fragment? = null
+//
+//        when (item.itemId) {
+//            R.id.navigation_home -> {
+//                fragment = ScheduleFragment.newInstance()
+//                binding.toolbar.title = "Schedule"
+//            }
+//            R.id.navigation_jobs -> {
+//                fragment = JobsFragment.newInstance()
+//                binding.toolbar.title = "Jobs"
+//            }
+//            R.id.navigation_profile -> {
+//                fragment = ProfileFragment.newInstance()
+//                binding.toolbar.title = "Profile"
+//
+//            }
+//        }
+        loadFragment(item.itemId)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,7 +80,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
         initialiseViewModel()
 
 //        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
-//        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        binding.included.bottomNavView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 //        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
 //        val navController = findNavController(R.id.mainNavFragment)
@@ -97,19 +100,19 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
         // set navigation graph
 //        navController.setGraph(R.navigation.nav_main)
 
-        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
+//        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
         // Set up navigation menu
-        binding.included.bottomNavView.setupWithNavController(navController)
+//        binding.included.bottomNavView.setupWithNavController(navController)
 
 
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-//        return NavigationUI.navigateUp(Navigation.findNavController(this, R.id.mainNavFragment), binding.drawerLayout)
-
-        return navController.navigateUp(binding.drawerLayout)
-
-    }
+//    override fun onSupportNavigateUp(): Boolean {
+////        return NavigationUI.navigateUp(Navigation.findNavController(this, R.id.mainNavFragment), binding.drawerLayout)
+//
+//        return navController.navigateUp(binding.drawerLayout)
+//
+//    }
 
     /*
     * Initialising the View using Data Binding
@@ -117,6 +120,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
     private fun initialiseView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_bottom_navigation_drawer)
         binding.navView.setNavigationItemSelectedListener (this)
+
 //        initToolbar()
 //        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
 //        val toggle = ActionBarDrawerToggle(
@@ -145,8 +149,8 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
      * We are observing the LiveData
      * */
     private fun initialiseViewModel() {
-//        loginViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java!!)
-//        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+//        loginViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainBottomNavigationDrawerViewModel::class.java!!)
+        viewModel = ViewModelProviders.of(this).get(MainBottomNavigationDrawerViewModel::class.java)
 
 //        movieListViewModel.getMoviesLiveData().observe(this, { resource ->
 //            if (resource.isLoading()) {
@@ -171,7 +175,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 
     }
 
-    private fun loadFragment(fragment: Fragment?): Boolean {
+    private fun loadFragment(itemId: Int): Boolean {
         //switching fragment
 //        if (fragment != null) {
 //            supportFragmentManager
@@ -180,7 +184,46 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 //                .commit()
 //            return true
 //        }
+        val tag = itemId.toString()
+        var fragment = supportFragmentManager.findFragmentByTag(tag) ?: when (itemId) {
+            R.id.navigation_home -> {
+                binding.toolbar.title = "Schedule"
+                ScheduleFragment.newInstance()
+            }
+            R.id.navigation_jobs -> {
+                binding.toolbar.title = "Jobs"
+                JobsFragment.newInstance()
+            }
+            R.id.navigation_profile -> {
+                binding.toolbar.title = "Profile"
+                ProfileFragment.newInstance()
+            }
+            else -> {
+                null
+            }
+        }
+
+        if (fragment != null) {
+            val transaction = supportFragmentManager.beginTransaction()
+
+            if (viewModel.lastActiveFragmentTag != null) {
+                val lastFragment = supportFragmentManager.findFragmentByTag(viewModel.lastActiveFragmentTag)
+                if (lastFragment != null)
+                    transaction.hide(lastFragment)
+            }
+
+            if (!fragment.isAdded) {
+                transaction.add(R.id.fragment_container, fragment, tag)
+            }
+            else {
+                transaction.show(fragment)
+            }
+
+            transaction.commit()
+            viewModel.lastActiveFragmentTag = tag
+        }
         return false
+
     }
 
     override fun onBackPressed() {
