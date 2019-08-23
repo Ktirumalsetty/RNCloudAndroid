@@ -14,12 +14,6 @@ import com.rncloud.android.databinding.ActivityMainBottomNavigationDrawerBinding
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.plusAssign
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupWithNavController
 import com.rncloud.android.common.KeepStateNavigator
 import com.rncloud.android.view.fragment.JobsFragment
 import com.rncloud.android.view.fragment.ProfileFragment
@@ -81,14 +75,13 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 
 //        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
         binding.included.bottomNavView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-//        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        binding.included.bottomNavView.setSelectedItemId(R.id.navigation_home);
 
 //        val navController = findNavController(R.id.mainNavFragment)
 
         // Set up ActionBar
-        setSupportActionBar(binding.toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(false)
+//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar!!.setDisplayShowHomeEnabled(false)
 
 
         // get fragment
@@ -121,7 +114,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_bottom_navigation_drawer)
         binding.navView.setNavigationItemSelectedListener (this)
 
-//        initToolbar()
+        initToolbar()
 //        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
 //        val toggle = ActionBarDrawerToggle(
 //            this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
