@@ -1,13 +1,17 @@
 package com.rncloud.android.api
 
+import Constants.BASE_URL
 import androidx.lifecycle.LiveData
 import com.google.gson.GsonBuilder
 import com.rncloud.android.BuildConfig
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
+import com.rncloud.android.model.PersonalDetailsRespModel
+import com.rncloud.android.model.PersonalInfoReqModel
 import okhttp3.OkHttpClient
 import okhttp3.OkHttpClient.*
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
@@ -19,7 +23,7 @@ interface APIService {
     companion object Factory {
 
 //        val BASE_URL = "https://kryptostext-kryptostextprodtest.azurewebsites.net/api/"
-        val BASE_URL = "http://104.211.61.196:7555/rncapi/"
+
 
         fun getInstance(): APIService {
             val okHttpClientBuilder = Builder()
@@ -53,5 +57,10 @@ interface APIService {
     @POST("Login/xLoginRequest")
 //    fun userLogin(@Field("username")username:String, @Field("userpass")userpass:String) : Call<LoginResponse>
 //    fun userLogin(@Body loginDataModel: LoginDataModel): Deferred<Response<LoginResponse>>
-    fun userLogin(@Body loginDataModel: LoginDataModel): LiveData<ApiResponse<LoginResponse>>
+    fun userLogin(@Body loginDataModel: LoginDataModel): Call<LoginResponse>
+
+    @POST("HCP/GetActorPersonalDetailInfo")
+//    fun userLogin(@Field("username")username:String, @Field("userpass")userpass:String) : Call<LoginResponse>
+//    fun userLogin(@Body loginDataModel: LoginDataModel): Deferred<Response<LoginResponse>>
+    fun getPersonalDetails(@Body personalInfoReqModel: PersonalInfoReqModel): Call<PersonalDetailsRespModel>
 }

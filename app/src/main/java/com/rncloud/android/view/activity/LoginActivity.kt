@@ -18,8 +18,6 @@ import com.rncloud.android.api.APIService
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
 import com.rncloud.android.view.activity.base.BaseAppCompatActivity
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.include_progress_overlay.view.*
 
 class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
 
