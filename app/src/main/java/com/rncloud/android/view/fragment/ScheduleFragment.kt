@@ -12,9 +12,10 @@ import androidx.databinding.DataBindingUtil
 import com.rncloud.android.R
 import com.rncloud.android.databinding.ScheduleFragmentBinding
 
-class ScheduleFragment : BaseFragment() {
+class ScheduleFragment : BaseFragment<ScheduleFragmentBinding>() {
+    override val layoutRes: Int
+        get() = R.layout.schedule_fragment //To change initializer of created properties use File | Settings | File Templates.
 
-    lateinit var binding : ScheduleFragmentBinding
 
     companion object {
         fun newInstance() = ScheduleFragment()

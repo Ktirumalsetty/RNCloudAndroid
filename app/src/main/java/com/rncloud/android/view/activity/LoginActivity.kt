@@ -15,8 +15,10 @@ import androidx.databinding.Observable
 import androidx.lifecycle.Observer
 import com.rncloud.android.R
 import com.rncloud.android.api.APIService
+import com.rncloud.android.common.AppPreferences
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
+import com.rncloud.android.model.XLoginController
 import com.rncloud.android.view.activity.base.BaseAppCompatActivity
 
 class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
@@ -69,19 +71,8 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
 
             if (isLoginValid()){
                 showProgress()
-                APIService.getInstance().userLogin(LoginDataModel(binding.email.text.toString())).observe(this,
-                    Observer {
-                        hideProgress()
-                        Log.d(TAG(),"getLoginRespLiveData"+it)
-                        if (it!!.isSuccessful) {
-                            startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
-                        } else {
-                            Toast.makeText(this,"some thing went wrong",Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
-
-                        }
-                    })
-//                loginViewModel.login(LoginDataModel(binding.email.text.toString(),binding.password.text.toString()))
+//
+                loginViewModel.login(LoginDataModel(binding.email.text.toString()))
             }
 
         })
@@ -122,15 +113,23 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
 //        loginViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java!!)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
-//        loginViewModel.getLoginRespLiveData().observe(this, Observer { resource ->
-//
-//            Log.d(TAG(),"getLoginRespLiveData"+resource)
-//            if (resource!!.isSuccessful) {
-//                startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
-//            } else {
-//                Toast.makeText(this,"somethingwent wrong",Toast.LENGTH_SHORT).show()
-//            }
-//        })
+        loginViewModel.getLoginRespLiveData().observe(this, Observer { resource ->
+            hideProgress()
+            Log.d(TAG(),"getLoginRespLiveData"+resource)
+            if (resource!=null) {
+                if(!resource.hasError){
+                    saveLoginRespToPrefs(resource.Result.xLoginController)
+                }else{
+                    showAlrtMsg("response failed ...")
+                }
+                startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
+            } else {
+                showErrorRespMsg()
+            }
+        })
+
+
+
 //        loginViewModel.getLoginRespLiveData().observe(this,{
 //            hideProgress()
 //            if(it.isSuccessful){
@@ -154,6 +153,14 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
 //
 //        /* Fetch movies list  */
 //        movieListViewModel.loadMoreMovies()
+    }
+
+    private fun saveLoginRespToPrefs(loginController:XLoginController){
+        AppPreferences.actorCode = loginController.ActorCode
+        AppPreferences.authGenKey = loginController.AuthGenKEY
+        AppPreferences.userName = loginController.UserName
+        AppPreferences.userType = loginController.UserType
+
     }
 
     @SuppressLint("NewApi")

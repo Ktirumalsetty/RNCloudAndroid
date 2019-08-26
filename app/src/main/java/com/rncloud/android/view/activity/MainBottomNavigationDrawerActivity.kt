@@ -65,6 +65,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 //            }
 //        }
         loadFragment(item.itemId)
+        true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -168,7 +169,7 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
 
     }
 
-    private fun loadFragment(itemId: Int): Boolean {
+    private fun loadFragment(itemId: Int) {
         //switching fragment
 //        if (fragment != null) {
 //            supportFragmentManager
@@ -215,7 +216,6 @@ class MainBottomNavigationDrawerActivity : AppCompatActivity(),NavigationView.On
             transaction.commit()
             viewModel.lastActiveFragmentTag = tag
         }
-        return false
 
     }
 

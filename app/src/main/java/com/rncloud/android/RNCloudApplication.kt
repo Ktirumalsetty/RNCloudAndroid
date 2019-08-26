@@ -2,6 +2,7 @@ package com.rncloud.android
 
 import android.app.Activity
 import android.app.Application
+import com.rncloud.android.common.AppPreferences
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -19,6 +20,7 @@ class RNCloudApplication :Application()  {
 //            .application(this)
 //            .build()
 //            .inject(this);
+        AppPreferences.init(this)
     }
 //    override fun activityInjector(): AndroidInjector<Activity> {
 //            return dispatchingAndroidInjector
