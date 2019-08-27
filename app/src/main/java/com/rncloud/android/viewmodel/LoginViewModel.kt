@@ -10,47 +10,47 @@ import com.rncloud.android.data.LoginRepository
 import com.rncloud.android.R
 import com.rncloud.android.api.APIService
 import com.rncloud.android.api.ApiResponse
+import com.rncloud.android.base.BaseViewModel
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
 import com.rncloud.android.ui.login.LoginFormState
 import com.rncloud.android.ui.login.LoginResult
+import retrofit2.Call
+import retrofit2.Response
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel : BaseViewModel() {
 
-    private val _loginForm = MutableLiveData<LoginFormState>()
-    val loginFormState: LiveData<LoginFormState> = _loginForm
+    private val _loginResponseLiveData = MutableLiveData<LoginResponse>()
+    private var loginResponseLiveData:LiveData<LoginResponse> = _loginResponseLiveData
 
-    private val _loginResult = MutableLiveData<LoginResult>()
-    private val _loginResponseLiveData = MutableLiveData<ApiResponse<LoginResponse>>()
-//    private val loginResponseLiveData : LiveData<ApiResponse<LoginResponse>> = _loginResponseLiveData
-    private var loginResponseLiveData:LiveData<ApiResponse<LoginResponse>> = _loginResponseLiveData
-    val loginResult: LiveData<LoginResult> = _loginResult
+    /**
+     * login API to authenticate
+     */
+    fun login(loginDataModel: LoginDataModel){
+        val call = apiService.userLogin(loginDataModel)
+        call.enqueue(object :retrofit2.Callback<LoginResponse>{
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                _loginResponseLiveData.value = null
+            }
 
-    fun login(loginDataModel: LoginDataModel) {
-        // can be launched in a separate asynchronous job
-        val loginRepository = LoginRepository()
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
 
-//        loginRepository.login(loginDataModel)
-         loginResponseLiveData = APIService.getInstance().userLogin(loginDataModel)
-//        loginResponseLiveData.value = loginRepository.login(loginDataModel).observe(object : LiveData {
-//
-//        })
-//        if (result is Result.Success) {
-//            _loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
+                    _loginResponseLiveData.value = response.body()
+
+            }
+
+        })
+    }
+
+//    fun loginDataChanged(username: String, password: String) {
+//        if (!isUserNameValid(username)) {
+//            _loginForm.value = LoginFormState(usernameError = R.string.invalid_username)
+//        } else if (!isPasswordValid(password)) {
+//            _loginForm.value = LoginFormState(passwordError = R.string.invalid_password)
 //        } else {
-//            _loginResult.value = LoginResult(error = R.string.login_failed)
+//            _loginForm.value = LoginFormState(isDataValid = true)
 //        }
-    }
-
-    fun loginDataChanged(username: String, password: String) {
-        if (!isUserNameValid(username)) {
-            _loginForm.value = LoginFormState(usernameError = R.string.invalid_username)
-        } else if (!isPasswordValid(password)) {
-            _loginForm.value = LoginFormState(passwordError = R.string.invalid_password)
-        } else {
-            _loginForm.value = LoginFormState(isDataValid = true)
-        }
-    }
+//    }
 
     // A placeholder username validation check
     private fun isUserNameValid(username: String): Boolean {

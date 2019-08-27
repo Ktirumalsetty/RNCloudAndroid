@@ -22,9 +22,6 @@ interface APIService {
 
     companion object Factory {
 
-//        val BASE_URL = "https://kryptostext-kryptostextprodtest.azurewebsites.net/api/"
-
-
         fun getInstance(): APIService {
             val okHttpClientBuilder = Builder()
                 .readTimeout(30, TimeUnit.SECONDS)
@@ -45,7 +42,7 @@ interface APIService {
             val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                 .client(okHttpClientBuilder.build())
 //                .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
+//                .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create()).build()
 
             return retrofit.create(APIService::class.java)

@@ -198,7 +198,7 @@
                         android:id="@+id/rb_married"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked=""
+
                         android:text="Married"
                         android:layout_weight="1" />
 
