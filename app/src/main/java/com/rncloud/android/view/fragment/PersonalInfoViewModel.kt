@@ -22,7 +22,7 @@ class PersonalInfoViewModel : BaseViewModel() {
 
     fun getPersonalInfo (){
         _isLoading.value = true
-       val call=  apiService.getPersonalDetails(PersonalInfoReqModel(AppPreferences.actorCode,
+       val call=  apiService.getPersonalDetails(AppPreferences.authGenKey,PersonalInfoReqModel(AppPreferences.actorCode,
             SendApiRequestModel(AppPreferences.authGenKey,1,AppPreferences.userName)
         ))
 

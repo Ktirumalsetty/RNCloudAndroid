@@ -15,6 +15,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.Header
 import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
@@ -59,5 +60,10 @@ interface APIService {
     @POST("HCP/GetActorPersonalDetailInfo")
 //    fun userLogin(@Field("username")username:String, @Field("userpass")userpass:String) : Call<LoginResponse>
 //    fun userLogin(@Body loginDataModel: LoginDataModel): Deferred<Response<LoginResponse>>
-    fun getPersonalDetails(@Body personalInfoReqModel: PersonalInfoReqModel): Call<PersonalDetailsRespModel>
+    fun getPersonalDetails(@Header("AuthGenKEY") authGenKey:String, @Body personalInfoReqModel: PersonalInfoReqModel): Call<PersonalDetailsRespModel>
+
+    @POST("HCP/GetActorLicenseInfo")
+//    fun userLogin(@Field("username")username:String, @Field("userpass")userpass:String) : Call<LoginResponse>
+//    fun userLogin(@Body loginDataModel: LoginDataModel): Deferred<Response<LoginResponse>>
+    fun getLicenceInfo(@Header("AuthGenKEY") authGenKey:String, @Body personalInfoReqModel: PersonalInfoReqModel): Call<PersonalDetailsRespModel>
 }

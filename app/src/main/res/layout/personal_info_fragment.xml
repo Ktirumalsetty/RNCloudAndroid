@@ -264,7 +264,7 @@
                         android:id="@+id/tiet_address_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="123 ocean ST" />
+                        android:text="@{personalInfo.addressLine1}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -283,7 +283,7 @@
                         android:id="@+id/tiet_address_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="" />
+                        android:text="@{personalInfo.addressLine2}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -302,7 +302,7 @@
                         android:id="@+id/tiet_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Hyderabad" />
+                        android:text="@{personalInfo.city}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -321,7 +321,7 @@
                         android:id="@+id/tiet_state"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Hyderabad" />
+                        android:text="@{personalInfo.state}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -341,7 +341,7 @@
                         android:id="@+id/tiet_postal_code"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="50090"
+                        android:text="@{personalInfo.zip}"
                         android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -391,7 +391,7 @@
                         android:id="@+id/tiet_mobile_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="4587895123"
+                        android:text="@{personalInfo.telephone1}"
                         android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -411,7 +411,7 @@
                         android:id="@+id/tiet_telephone_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="@{personalInfo.telephone2}"
                         android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -432,7 +432,7 @@
                         android:id="@+id/tiet_email_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="@{personalInfo.email}"
                         android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -482,7 +482,7 @@
                         android:id="@+id/tiet_contact_person"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Emergency Name" />
+                        android:text="@{personalInfo.emergencyContactPersonName}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -502,7 +502,7 @@
                         android:id="@+id/tiet_emr_contact_no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="@{personalInfo.emergencyContactNo1}"
                         android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -522,7 +522,7 @@
                         android:id="@+id/tiet_emr_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="@{personalInfo.emergencyAddress}"
                         android:inputType="textPostalAddress"
                         android:paddingBottom="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -573,7 +573,7 @@
                         android:id="@+id/tiet_driving_licence"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="" />
+                        android:text="Not available" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
