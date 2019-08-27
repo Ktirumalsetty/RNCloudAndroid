@@ -2,6 +2,8 @@ package com.rncloud.android.base
 
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rncloud.android.api.APIService
 
@@ -10,6 +12,8 @@ import com.rncloud.android.api.APIService
  */
 open class BaseViewModel: ViewModel(),Observable {
 
+   open val _isLoading:MutableLiveData<Boolean> = MutableLiveData()
+   val isLoading:LiveData<Boolean> = _isLoading
 
     lateinit var apiService:APIService
     init {

@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import com.rncloud.android.R
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.rncloud.android.databinding.ActivityMainBottomNavigationDrawerBinding
 
@@ -62,8 +63,6 @@ class MainBottomNavigationDrawerActivity : BaseAppCompatActivity<ActivityMainBot
         binding.included.bottomNavView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         binding.included.bottomNavView.selectedItemId=R.id.navigation_home
 
-
-
     }
 
 
@@ -74,12 +73,11 @@ class MainBottomNavigationDrawerActivity : BaseAppCompatActivity<ActivityMainBot
         bindView(getLayoutRes())
         binding.navView.setNavigationItemSelectedListener (this)
         initToolbar()
-//        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
-//        val toggle = ActionBarDrawerToggle(
-//            this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
-//        )
-//        binding.drawerLayout.addDrawerListener(toggle)
-//        toggle.syncState()
+        val toggle = ActionBarDrawerToggle(
+            this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 //        moviesListAdapter = MoviesListAdapter(this)
 //        binding.moviesList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
 //        binding.moviesList.adapter = moviesListAdapter

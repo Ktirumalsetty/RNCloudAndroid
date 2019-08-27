@@ -21,12 +21,14 @@ class PersonalInfoViewModel : BaseViewModel() {
 
 
     fun getPersonalInfo (){
+        _isLoading.value = true
        val call=  apiService.getPersonalDetails(PersonalInfoReqModel(AppPreferences.actorCode,
             SendApiRequestModel(AppPreferences.authGenKey,1,AppPreferences.userName)
         ))
 
         call.enqueue(object :Callback<PersonalDetailsRespModel>{
             override fun onFailure(call: Call<PersonalDetailsRespModel>, t: Throwable) {
+                _isLoading.value = false
                 _personalInfoRespLiveData.value= null
             }
 
@@ -34,6 +36,7 @@ class PersonalInfoViewModel : BaseViewModel() {
                 call: Call<PersonalDetailsRespModel>,
                 response: Response<PersonalDetailsRespModel>
             ) {
+                _isLoading.value = false
                 _personalInfoRespLiveData.value= response.body()
 
             }
