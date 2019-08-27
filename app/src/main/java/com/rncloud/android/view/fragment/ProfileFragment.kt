@@ -17,13 +17,15 @@ import com.rncloud.android.databinding.JobsFragmentBinding
 import com.rncloud.android.databinding.ProfileFragmentBinding
 import com.rncloud.android.view.activity.MainBottomNavigationDrawerActivity
 
-class ProfileFragment : BaseFragment() {
+class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
+    override val layoutRes: Int
+        get() = R.layout.profile_fragment
 
     companion object {
         fun newInstance() = ProfileFragment()
     }
 
-    private lateinit var binding: ProfileFragmentBinding
+//    private lateinit var binding: ProfileFragmentBinding
 
     private lateinit var viewModel: ProfileViewModel
 
@@ -32,7 +34,8 @@ class ProfileFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d(TAG(),"onCreateView")
-        binding = DataBindingUtil.inflate(inflater, R.layout.profile_fragment, container, false)
+//        binding = DataBindingUtil.inflate(inflater, R.layout.profile_fragment, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
         binding.viewpager.adapter =ProfileFragmentPagerAdapter((activity as MainBottomNavigationDrawerActivity).supportFragmentManager)
         binding.viewpager.offscreenPageLimit = 6
         binding.tablayout.setupWithViewPager(binding.viewpager)

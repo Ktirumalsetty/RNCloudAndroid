@@ -2,19 +2,11 @@ package com.rncloud.android.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import androidx.lifecycle.Observer
-import com.rncloud.android.data.LoginRepository
 
-import com.rncloud.android.R
-import com.rncloud.android.api.APIService
-import com.rncloud.android.api.ApiResponse
 import com.rncloud.android.base.BaseViewModel
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
-import com.rncloud.android.ui.login.LoginFormState
-import com.rncloud.android.ui.login.LoginResult
 import retrofit2.Call
 import retrofit2.Response
 

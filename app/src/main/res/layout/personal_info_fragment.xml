@@ -143,7 +143,7 @@
                         android:id="@+id/tiet_social_sec_no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@={personalInfo.socialSecurityNumber}"
+                        android:text="@{personalInfo.socialSecurityNumber}"
                         tools:text="123467899000" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -163,7 +163,7 @@
                         android:id="@+id/tiet_dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@={personalInfo.dateOfBirth}"
+                        android:text="@{personalInfo.dateOfBirth}"
                         tools:text="18-08-1986"
                         android:clickable="false"
 

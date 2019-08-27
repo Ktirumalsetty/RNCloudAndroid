@@ -23,21 +23,15 @@ class ScheduleFragment : BaseFragment<ScheduleFragmentBinding>() {
 
     private lateinit var viewModel: ScheduleViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-//        return inflater.inflate(R.layout.schedule_fragment, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d(TAG(),"onCreateView")
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.schedule_fragment, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ScheduleViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

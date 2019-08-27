@@ -125,6 +125,8 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
                 startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
             } else {
                 showErrorRespMsg()
+                startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
+
             }
         })
 
