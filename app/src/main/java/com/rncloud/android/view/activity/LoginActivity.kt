@@ -64,14 +64,11 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
 
 //        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-
-        initialiseView()
+        bindView(getLayoutRes())
         initialiseViewModel()
         binding.login.setOnClickListener(View.OnClickListener {
 
             if (isLoginValid()){
-                showProgress()
-//
                 loginViewModel.login(LoginDataModel(binding.email.text.toString()))
             }
 
@@ -82,27 +79,6 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
         })
     }
 
-    /*
-    * Initialising the View using Data Binding
-    * */
-    private fun initialiseView() {
-        bindView(getLayoutRes())
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-
-//        moviesListAdapter = MoviesListAdapter(this)
-//        binding.moviesList.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-//        binding.moviesList.adapter = moviesListAdapter
-//
-//        val startSnapHelper = PagerSnapHelper(
-//            object : RecyclerSnapItemListener {
-//                override fun onItemSnap(position: Int) {
-//                    val movie = moviesListAdapter.getItem(position)
-//                    binding.overlayLayout.updateCurrentBackground(movie.getFormattedPosterPath())
-//                }
-//            }
-//        )
-//        startSnapHelper.attachToRecyclerView(binding.moviesList)
-    }
 
     /*
      * Step 3: Initialising the ViewModel class here.
@@ -112,9 +88,9 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
     private fun initialiseViewModel() {
 //        loginViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java!!)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-
+        binding.viewModel = loginViewModel
+        binding.lifecycleOwner = this
         loginViewModel.getLoginRespLiveData().observe(this, Observer { resource ->
-            hideProgress()
             Log.d(TAG(),"getLoginRespLiveData"+resource)
             if (resource!=null) {
                 if(!resource.hasError){

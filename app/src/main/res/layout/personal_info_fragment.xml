@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"></import>
 
         <variable
                 name="personalInfo"
@@ -21,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
+                android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
                 tools:context=".view.fragment.PersonalInfoFragment">
 
             <androidx.cardview.widget.CardView
@@ -631,19 +633,35 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:paddingBottom="10dp" />
 
-            <androidx.core.widget.ContentLoadingProgressBar
-                    android:id="@+id/progressBar"
-                    android:layout_marginTop="25dp"
-                    style="?android:progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:visible="@{viewModel.isLoading()}"
-                   />
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"-->
+
+<!--                >-->
+
+
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--            <androidx.core.widget.ContentLoadingProgressBar-->
+<!--                    android:id="@+id/progressBar"-->
+<!--                    android:layout_marginTop="25dp"-->
+<!--                    style="?android:progressBarStyle"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                   "-->
+<!--                   />-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <include android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+                layout="@layout/progress_bar"></include>
     </ScrollView>
 </layout>

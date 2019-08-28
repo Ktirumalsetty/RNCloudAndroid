@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"></import>
+        <variable
+                name="viewModel"
+                type="com.rncloud.android.view.fragment.JobsViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,7 +41,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-        <include layout="@layout/include_progress_overlay"></include>
+        <include android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+                layout="@layout/progress_bar"></include>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -12,13 +12,10 @@ import com.rncloud.android.api.APIService
  */
 open class BaseViewModel: ViewModel(),Observable {
 
-   open val _isLoading:MutableLiveData<Boolean> = MutableLiveData()
-   val isLoading:LiveData<Boolean> = _isLoading
+    open val _isLoading:MutableLiveData<Boolean> = MutableLiveData()
+    val isLoading:LiveData<Boolean> =_isLoading
 
-    lateinit var apiService:APIService
-    init {
-        apiService = APIService.getInstance()
-    }
+    var apiService:APIService = APIService.getInstance()
 
     private val callbacks: PropertyChangeRegistry = PropertyChangeRegistry()
 

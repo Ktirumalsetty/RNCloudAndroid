@@ -12,21 +12,26 @@ import retrofit2.Response
 
 class LoginViewModel : BaseViewModel() {
 
+//    private val _isLoading:MutableLiveData<Boolean> = MutableLiveData()
+//    val isLoading:LiveData<Boolean> = _isLoading
+
     private val _loginResponseLiveData = MutableLiveData<LoginResponse>()
-    private var loginResponseLiveData:LiveData<LoginResponse> = _loginResponseLiveData
+    var loginResponseLiveData:LiveData<LoginResponse> = _loginResponseLiveData
 
     /**
      * login API to authenticate
      */
     fun login(loginDataModel: LoginDataModel){
+        _isLoading.value = true
         val call = apiService.userLogin(loginDataModel)
         call.enqueue(object :retrofit2.Callback<LoginResponse>{
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                _isLoading.value = false
                 _loginResponseLiveData.value = null
             }
 
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-
+                _isLoading.value = false
                     _loginResponseLiveData.value = response.body()
 
             }

@@ -10,10 +10,10 @@
         android:animateLayoutChanges="true"
         android:background="@android:color/black"
         android:clickable="true"
-        android:visibility="gone">
+        android:visibility="visible">
 
     <androidx.core.widget.ContentLoadingProgressBar
-            style="?android:attr/progressBarStyle"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
