@@ -45,4 +45,8 @@ class PersonalInfoViewModel : BaseViewModel() {
 
     }
 
+    fun onDateOfBirthTap(){
+
+    }
+
 }
