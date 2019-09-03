@@ -10,7 +10,7 @@ class LicencesAdapter(private val items:ArrayList<Licence>): RecyclerView.Adapte
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LicenceVH {
-        return LicenceVH(LicenceRowItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return LicenceVH(LicenceRowItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun getItemCount(): Int {

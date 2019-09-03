@@ -6,8 +6,8 @@
     <data>
 
         <variable
-                name="education"
-                type="com.rncloud.android.model.Education" />
+                name="certification"
+                type="com.rncloud.android.model.Certification" />
 
     </data>
 
@@ -16,13 +16,12 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="3dp"
             app:cardElevation="2dp"
-            app:contentPadding="5dp"
+            app:contentPadding="10dp"
             android:layout_margin="5dp"
 
             >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -30,55 +29,46 @@
 
 
             <TextView
-                    android:id="@+id/tv_inst_type"
+                    android:id="@+id/tv_cert_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="TextView"
-                    android:text="@{education.instituteType}"
+                    tools:text="Cert Type"
+                    android:text="@{certification.credentialType}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                    android:id="@+id/tv_inst_name"
+                    android:id="@+id/tv_cert_issuing_auth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    tools:text="Florida"
-                    android:text="@{education.instituteName}"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_inst_type"
+                    tools:text="TN"
+                    android:text="@{certification.issuingAuthority}"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cert_type"
                     app:layout_constraintStart_toStartOf="parent"
                     />
 
             <TextView
-                    android:id="@+id/tv_course_name"
+                    android:id="@+id/tv_cert_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    tools:text="12345"
-                    android:text="@{education.courseStudy}"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_inst_name"
+                    tools:text="1234567"
+                    android:text="@{certification.credentialNumber}"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cert_issuing_auth"
                     app:layout_constraintStart_toStartOf="parent"
                     />
 
             <TextView
-                    android:id="@+id/tv_is_graduated"
+                    android:id="@+id/tv_valid_from_to"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    tools:text="GraduTE : y"
-                    android:text="@{education.isGraduateFormatted}"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_course_name"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-            <TextView
-                    android:id="@+id/tv_completed_year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    tools:text="From - T0 Date"
-                    android:text="@{education.completedAtFormat}"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_is_graduated"
+                    tools:text="Valid From - To"
+                    app:validFrom="@{certification.validFrom}"
+                    app:validTo="@{certification.validTo}"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cert_no"
                     app:layout_constraintStart_toStartOf="parent"
                     />
 

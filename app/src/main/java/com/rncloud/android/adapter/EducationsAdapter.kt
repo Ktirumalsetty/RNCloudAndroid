@@ -12,7 +12,7 @@ class EducationsAdapter(private val items:ArrayList<Education>): RecyclerView.Ad
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EducationVH {
-        return EducationVH(EducationListItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return EducationVH(EducationListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun getItemCount(): Int {

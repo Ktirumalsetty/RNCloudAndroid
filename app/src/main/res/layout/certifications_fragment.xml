@@ -9,7 +9,7 @@
 
         <variable
                 name="viewModel"
-                type="com.rncloud.android.view.fragment.EmploymentViewModel" />
+                type="com.rncloud.android.view.fragment.CertificationsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,11 +18,11 @@
             >
 
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_employments"
+                android:id="@+id/rv_certifications"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                tools:listitem="@layout/employment_list_item"
+                tools:listitem="@layout/certifications_list_item"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                tools:text="No Employment.."
+                tools:text="No Certifications.."
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

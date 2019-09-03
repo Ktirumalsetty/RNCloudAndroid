@@ -3,18 +3,13 @@ package com.rncloud.android.view.activity
 import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
-import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import com.rncloud.android.R
-import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.rncloud.android.databinding.ActivityMainBottomNavigationDrawerBinding
 
 import androidx.lifecycle.ViewModelProviders
-import com.rncloud.android.common.KeepStateNavigator
 import com.rncloud.android.view.activity.base.BaseAppCompatActivity
 import com.rncloud.android.view.fragment.JobsFragment
 import com.rncloud.android.view.fragment.ProfileFragment

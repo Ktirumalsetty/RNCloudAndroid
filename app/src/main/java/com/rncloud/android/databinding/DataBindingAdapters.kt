@@ -40,13 +40,13 @@ fun setError(view: TextInputLayout, sequence: CharSequence?) {
 @BindingAdapter(value = ["bind:validFrom", "bind:validTo"], requireAll = true)
 fun bindServerDate(textView: TextView, validFrom: String,validTo:String) {
     /*Parse string data and set it in another format for your textView*/
-    textView.text = "${(DateTimeUtils.formatToDate(validFrom))} - ${(DateTimeUtils.formatToDate(validTo))}) "
+    textView.text = "${(DateTimeUtils.formatToDate(validFrom))} - ${(DateTimeUtils.formatToDate(validTo))} "
 }
 
 @BindingAdapter(value = ["bind:employerFrom", "bind:employerTo"], requireAll = true)
 fun setEmployerFromTo(textView: TextView, employerFrom: String,employerTo:String) {
     /*Parse string data and set it in another format for your textView*/
-    textView.text = "${(DateTimeUtils.formatToDate(employerFrom))} - ${(DateTimeUtils.formatToDate(employerTo))}) "
+    textView.text = "${(DateTimeUtils.formatToDate(employerFrom))} - ${(DateTimeUtils.formatToDate(employerTo))} "
 }
 
 

@@ -29,6 +29,7 @@ class EmploymentViewModel : BaseViewModel() {
           }
 
           override fun onResponse(call: Call<EmploymentResp>, response: Response<EmploymentResp>) {
+              _isLoading.value =false
               _employmentRespLiveData.value = response.body()
           }
 

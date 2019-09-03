@@ -60,7 +60,7 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
             when (position) {
                 0 -> fragment = PersonalInfoFragment.newInstance()
                 1 -> fragment = LicencesFragment.newInstance()
-                2 -> fragment = ScheduleFragment.newInstance()
+                2 -> fragment = CertificationsFragment.newInstance()
                 3 -> fragment = EducationFragment.newInstance()
                 4 -> fragment = EmploymentFragment.newInstance()
                 5 -> fragment = ScheduleFragment.newInstance()

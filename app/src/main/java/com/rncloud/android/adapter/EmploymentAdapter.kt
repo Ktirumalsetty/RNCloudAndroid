@@ -10,7 +10,7 @@ class EmploymentAdapter(private val items:ArrayList<Employment>): RecyclerView.A
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployerVH {
-        return EmployerVH(EmploymentListItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return EmployerVH(EmploymentListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun getItemCount(): Int {

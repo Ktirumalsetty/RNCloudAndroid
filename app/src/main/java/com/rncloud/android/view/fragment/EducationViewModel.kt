@@ -24,6 +24,7 @@ class EducationViewModel : BaseViewModel() {
         apiService.getEducationInfo(AppPreferences.authGenKey, GenericReqModel()).enqueue(object:Callback<EducationsResp>{
             override fun onFailure(call: Call<EducationsResp>, t: Throwable) {
                 _isLoading.value = false
+                _educationRespLiveData.value=null
 
             }
 
@@ -31,7 +32,10 @@ class EducationViewModel : BaseViewModel() {
                 call: Call<EducationsResp>,
                 response: Response<EducationsResp>
             ) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                _isLoading.value = false
+                _educationRespLiveData.value=response.body()
+
+
             }
 
         })

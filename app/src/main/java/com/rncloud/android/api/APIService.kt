@@ -67,4 +67,7 @@ interface APIService {
 
     @POST("HCP/GetActorEmpHistoryInfo")
     fun getEmpHistoryInfo(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<EmploymentResp>
+
+    @POST("HCP/GetActorCertificationsInfo")
+    fun getCertificationsInfo(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<CertificationsResp>
 }
