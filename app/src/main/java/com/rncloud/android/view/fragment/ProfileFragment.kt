@@ -59,10 +59,10 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
             var fragment: Fragment = Fragment()
             when (position) {
                 0 -> fragment = PersonalInfoFragment.newInstance()
-                1 -> fragment = ScheduleFragment.newInstance()
+                1 -> fragment = LicencesFragment.newInstance()
                 2 -> fragment = ScheduleFragment.newInstance()
-                3 -> fragment = ScheduleFragment.newInstance()
-                4 -> fragment = ScheduleFragment.newInstance()
+                3 -> fragment = EducationFragment.newInstance()
+                4 -> fragment = EmploymentFragment.newInstance()
                 5 -> fragment = ScheduleFragment.newInstance()
             }
 

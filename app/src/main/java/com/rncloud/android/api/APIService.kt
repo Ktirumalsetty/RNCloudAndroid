@@ -4,10 +4,7 @@ import Constants.BASE_URL
 import androidx.lifecycle.LiveData
 import com.google.gson.GsonBuilder
 import com.rncloud.android.BuildConfig
-import com.rncloud.android.model.LoginDataModel
-import com.rncloud.android.model.LoginResponse
-import com.rncloud.android.model.PersonalDetailsRespModel
-import com.rncloud.android.model.PersonalInfoReqModel
+import com.rncloud.android.model.*
 import okhttp3.OkHttpClient
 import okhttp3.OkHttpClient.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -60,10 +57,14 @@ interface APIService {
     @POST("HCP/GetActorPersonalDetailInfo")
 //    fun userLogin(@Field("username")username:String, @Field("userpass")userpass:String) : Call<LoginResponse>
 //    fun userLogin(@Body loginDataModel: LoginDataModel): Deferred<Response<LoginResponse>>
-    fun getPersonalDetails(@Header("AuthGenKEY") authGenKey:String, @Body personalInfoReqModel: PersonalInfoReqModel): Call<PersonalDetailsRespModel>
+    fun getPersonalDetails(@Header("AuthGenKEY") authGenKey:String, @Body personalInfoReqModel: GenericReqModel): Call<PersonalDetailsRespModel>
 
     @POST("HCP/GetActorLicenseInfo")
-//    fun userLogin(@Field("username")username:String, @Field("userpass")userpass:String) : Call<LoginResponse>
-//    fun userLogin(@Body loginDataModel: LoginDataModel): Deferred<Response<LoginResponse>>
-    fun getLicenceInfo(@Header("AuthGenKEY") authGenKey:String, @Body personalInfoReqModel: PersonalInfoReqModel): Call<PersonalDetailsRespModel>
+    fun getLicenceInfo(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<LicenceResp>
+
+    @POST("HCP/GetActorEducationInfo")
+    fun getEducationInfo(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<EducationsResp>
+
+    @POST("HCP/GetActorEmpHistoryInfo")
+    fun getEmpHistoryInfo(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<EmploymentResp>
 }

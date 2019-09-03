@@ -172,8 +172,6 @@
                         android:text="@{personalInfo.dateOfBirth}"
                         tools:text="18-08-1986"
                         android:clickable="false"
-                        android:onClick="@{viewModel.onDateOfBirthTap()}"
-
 
                         />
 

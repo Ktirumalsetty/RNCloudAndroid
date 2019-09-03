@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="employment"
+                type="com.rncloud.android.model.Employment" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                >
+
+
+            <TextView
+                    android:id="@+id/tv_employer_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Employer Name"
+                    android:text="@{employment.employerName}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                    android:id="@+id/tv_emplr_from_and_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:text="From Date - To Date"
+                    app:employerFrom="@{employment.fromDate}"
+                    app:employerTo="@{employment.toDate}"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_employer_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+            <TextView
+                    android:id="@+id/tv_still_working"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:text="Still Working : Yes"
+                    android:text="@{employment.isCurrent ? @string/is_current_empployee: @string/is_not_current_empployee}"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_emplr_from_and_to"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+            <TextView
+                    android:id="@+id/tv_contactable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:text="May Contact: True"
+                    android:text="@{employment.mayContact ? @string/may_contact_yes : @string/may_contact_no}"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_still_working"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

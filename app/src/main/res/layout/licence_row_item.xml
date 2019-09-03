@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+                name="licence"
+                type="com.rncloud.android.model.Licence" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            >
+
+
+        <TextView
+                android:id="@+id/tv_lic_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="TextView"
+                android:text="@{licence.credentialType}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/tv_lic_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                tools:text="Florida"
+                android:text="@{licence.issuingAuthority}"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lic_type"
+                app:layout_constraintStart_toStartOf="parent"
+                 />
+
+        <TextView
+                android:id="@+id/tv_lic_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                tools:text="12345"
+                android:text="@{licence.credentialNumber}"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lic_state"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+        <TextView
+                android:id="@+id/tv_lic_valid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                tools:text="From - T0 Date"
+                app:validFrom="@{licence.validFrom}"
+                app:validTo="@{licence.validTo}"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lic_no"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

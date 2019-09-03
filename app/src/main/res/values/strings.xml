@@ -28,4 +28,11 @@
     <string name="skill_assessment">Skill Assesment</string>
     <string name="my_registries">My Registries</string>
     <string name="title_activity_my_preferences">MyPreferencesActivity</string>
+
+
+    <string name="valid_from_to"> %1$s - %1$s</string>
+    <string name="is_current_empployee">Still Working : Yes</string>
+    <string name="is_not_current_empployee">Still Working : No</string>
+    <string name="may_contact_yes">May Contact : Yes</string>
+    <string name="may_contact_no">May Contact : No</string>
 </resources>

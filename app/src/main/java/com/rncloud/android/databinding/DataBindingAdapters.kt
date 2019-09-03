@@ -6,6 +6,10 @@ import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputLayout
+import android.widget.TextView
+import androidx.annotation.NonNull
+import com.rncloud.android.common.DateTimeUtils
+
 
 /**
  * Created by KondalRao Tirumalasetty on 8/23/2019.
@@ -32,6 +36,21 @@ fun setError(view: TextInputLayout, sequence: CharSequence?) {
         view.error = sequence
     }
 }
+
+@BindingAdapter(value = ["bind:validFrom", "bind:validTo"], requireAll = true)
+fun bindServerDate(textView: TextView, validFrom: String,validTo:String) {
+    /*Parse string data and set it in another format for your textView*/
+    textView.text = "${(DateTimeUtils.formatToDate(validFrom))} - ${(DateTimeUtils.formatToDate(validTo))}) "
+}
+
+@BindingAdapter(value = ["bind:employerFrom", "bind:employerTo"], requireAll = true)
+fun setEmployerFromTo(textView: TextView, employerFrom: String,employerTo:String) {
+    /*Parse string data and set it in another format for your textView*/
+    textView.text = "${(DateTimeUtils.formatToDate(employerFrom))} - ${(DateTimeUtils.formatToDate(employerTo))}) "
+}
+
+
+
 
 ///**
 // * To show image from url

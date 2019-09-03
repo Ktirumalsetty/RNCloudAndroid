@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
 import com.rncloud.android.base.BaseViewModel
 import com.rncloud.android.common.AppPreferences
+import com.rncloud.android.model.GenericReqModel
 import com.rncloud.android.model.LoginResponse
 import com.rncloud.android.model.PersonalDetailsRespModel
-import com.rncloud.android.model.PersonalInfoReqModel
 import com.rncloud.android.model.SendApiRequestModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,9 +22,7 @@ class PersonalInfoViewModel : BaseViewModel() {
 
     fun getPersonalInfo (){
         _isLoading.value = true
-       val call=  apiService.getPersonalDetails(AppPreferences.authGenKey,PersonalInfoReqModel(AppPreferences.actorCode,
-            SendApiRequestModel(AppPreferences.authGenKey,1,AppPreferences.userName)
-        ))
+       val call=  apiService.getPersonalDetails(AppPreferences.authGenKey, GenericReqModel())
 
         call.enqueue(object :Callback<PersonalDetailsRespModel>{
             override fun onFailure(call: Call<PersonalDetailsRespModel>, t: Throwable) {
