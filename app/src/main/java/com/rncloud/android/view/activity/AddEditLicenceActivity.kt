@@ -27,9 +27,9 @@ class AddEditLicenceActivity : BaseActivity<AddEditLicenceViewModel, ActivityAdd
 
         licence = intent.getSerializableExtra("licenceObj") as Licence
         if(licence!=null){
-            binding.toolbar.title = getString(R.string.title_activity_edit_licence)
+            supportActionBar?.title = getString(R.string.title_activity_edit_licence)
         }else{
-            binding.toolbar.title = getString(R.string.title_activity_add_licence)
+            supportActionBar?.title = getString(R.string.title_activity_add_licence)
         }
         binding.licence = licence
     }
