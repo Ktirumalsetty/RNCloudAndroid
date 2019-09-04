@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.rncloud.android">
+        package="com.rncloud.android">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
             android:name=".RNCloudApplication"
@@ -12,29 +12,29 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:usesCleartextTraffic="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true">
+        <activity
+                android:name=".view.activity.AddEditLicenceActivity"
+                android:label="@string/title_activity_add_licence"
+                android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
                 android:name=".view.activity.MyPreferencesActivity"
                 android:label="@string/title_activity_my_preferences"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+                android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
                 android:name=".view.activity.SignUpFormActivity"
                 android:label="@string/title_activity_sign_up_form"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".view.activity.MainBottomNavigationDrawerActivity">
-        </activity>
-        <activity android:name=".view.activity.SignUpActivity">
-        </activity>
+                android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".view.activity.MainBottomNavigationDrawerActivity"></activity>
+        <activity android:name=".view.activity.SignUpActivity"></activity>
         <activity
                 android:name=".view.activity.LoginActivity"
                 android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

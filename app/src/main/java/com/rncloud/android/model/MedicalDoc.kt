@@ -1,9 +1,9 @@
 package com.rncloud.android.model
 
 import com.rncloud.android.common.DateTimeUtils
-import java.io.Serializable
 
-data class Licence(
+data class MedicalDoc(
+    val `$id`: String,
     val ActorCode: Int,
     val ActorCredentialCode: Int,
     val ActorDocCode: Int,
@@ -19,9 +19,7 @@ data class Licence(
     val Remarks: String,
     val ValidFrom: String,
     val ValidTo: String
-):Serializable {
-    val ValidFromFormatted: String
-        get() = DateTimeUtils.formatToDate(ValidFrom)
-    val ValidToFormatted: String
-        get() = DateTimeUtils.formatToDate(ValidTo)
+){
+    val validFromFormatted:String
+    get() = DateTimeUtils.formatToDate(ValidFrom)
 }

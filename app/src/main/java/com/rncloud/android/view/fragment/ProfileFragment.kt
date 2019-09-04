@@ -63,7 +63,7 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
                 2 -> fragment = CertificationsFragment.newInstance()
                 3 -> fragment = EducationFragment.newInstance()
                 4 -> fragment = EmploymentFragment.newInstance()
-                5 -> fragment = ScheduleFragment.newInstance()
+                5 -> fragment = MedicalDocsFragment.newInstance()
             }
 
             return fragment

@@ -9,3 +9,7 @@ data class EducationsResp(val Result: List<Education>):BaseResp()
 data class EmploymentResp(val Result: List<Employment>):BaseResp()
 
 data class CertificationsResp(val Result: List<Certification>):BaseResp()
+
+data class MedicalDocsResp(val Result: List<MedicalDoc>):BaseResp()
+
+data class LicenceStateResp(val Result: List<LicenceState>):BaseResp()

@@ -35,4 +35,14 @@
     <string name="is_not_current_empployee">Still Working : No</string>
     <string name="may_contact_yes">May Contact : Yes</string>
     <string name="may_contact_no">May Contact : No</string>
+    <string name="title_activity_add_licence">Add Licence</string>
+    <string name="title_activity_edit_licence">Edit Licence</string>
+    <string name="prompt_licence_type">Licence Type*</string>
+    <string name="prompt_licence_no">Licence Number</string>
+    <string name="prompt_valid_from">Valid From</string>
+    <string name="prompt_valid_to">Valid To</string>
+    <string name="prompt_licencing_state">Licencing State</string>
+    <string name="prompt_licence_additional_dtls">Additional Details</string>
+    <string name="prompt_licence_remarks">Remarks</string>
+    <string name="action_submit">Submit</string>
 </resources>

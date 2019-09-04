@@ -70,4 +70,10 @@ interface APIService {
 
     @POST("HCP/GetActorCertificationsInfo")
     fun getCertificationsInfo(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<CertificationsResp>
+
+    @POST("HCP/GetActorMedicalFitnessInfo")
+    fun getMedicalDocsInfo(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<MedicalDocsResp>
+
+    @POST("MasterData/GetCodeValuesByType")
+    fun getLicenceStates(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<LicenceStateResp>
 }

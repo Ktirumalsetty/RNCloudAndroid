@@ -1,5 +1,6 @@
 package com.rncloud.android.view.fragment
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 
 import com.rncloud.android.R
+import com.rncloud.android.adapter.ClickListener
 import com.rncloud.android.adapter.LicencesAdapter
+import com.rncloud.android.adapter.RecyclerTouchListener
 import com.rncloud.android.databinding.LicencesFragmentBinding
 import com.rncloud.android.model.Licence
+import com.rncloud.android.view.activity.AddEditLicenceActivity
 
 class LicencesFragment : BaseFragment<LicencesFragmentBinding>() {
     override val layoutRes: Int
@@ -53,6 +58,17 @@ class LicencesFragment : BaseFragment<LicencesFragmentBinding>() {
             }
 
         })
+
+        binding.rvLicences.addOnItemTouchListener(RecyclerTouchListener(context,binding.rvLicences,object:ClickListener{
+            override fun onClick(view: View, position: Int) {
+                val licence = licences[position]
+                startActivity(Intent(context,AddEditLicenceActivity::class.java).putExtra("licenceObj",licence))
+            }
+
+            override fun onLongClick(view: View, position: Int) {
+            }
+
+        }))
 
     }
 

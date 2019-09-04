@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import com.rncloud.android.R
 import com.rncloud.android.api.APIService
 import com.rncloud.android.common.AppPreferences
+import com.rncloud.android.common.DialogUtils
 import com.rncloud.android.model.LoginDataModel
 import com.rncloud.android.model.LoginResponse
 import com.rncloud.android.model.XLoginController
@@ -26,29 +27,6 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
     override fun getLayoutRes(): Int {
         return R.layout.activity_login
     }
-
-//    override val layoutRes: Int
-//        get() = R.layout.activity_login
-
-//    override val layoutRes: Int
-//        get() = R.layout.activity_login
-//
-////    override val bindingVariable: Int
-////        get() = BR.viewModel
-//
-//    override fun getViewModel(): Class<LoginViewModel> {
-//
-//        return LoginViewModel::class.java
-//    }
-
-    /*
-     * Step 1: Here as mentioned in Step 5, we need to
-     * inject the ViewModelFactory. The ViewModelFactory class
-     * has a list of ViewModels and will provide
-     * the corresponding ViewModel in this activity
-     * */
-//    @Inject
-//    internal lateinit var viewModelFactory: ViewModelFactory
 
     /*
     * This is our ViewModel class
@@ -96,7 +74,7 @@ class LoginActivity: BaseAppCompatActivity<ActivityLoginBinding>() {
                 if(!resource.hasError){
                     saveLoginRespToPrefs(resource.Result.xLoginController)
                 }else{
-                    showAlrtMsg("response failed ...")
+                    DialogUtils.showToast(this,"response failed ...")
                 }
                 startActivity(Intent(this@LoginActivity,MainBottomNavigationDrawerActivity::class.java))
             } else {

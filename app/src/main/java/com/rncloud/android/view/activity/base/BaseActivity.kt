@@ -1,134 +1,158 @@
 package com.rncloud.android.view.activity.base
 
-
+import android.content.DialogInterface
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
-import androidx.annotation.LayoutRes
+import android.os.Handler
+import android.util.Log
+import android.view.MenuItem
+import android.view.View
+import android.widget.FrameLayout
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import arch.lavaira.com.android_kotlin_mvvm.view.listeners.BackButtonHandlerListener
-import arch.lavaira.com.android_kotlin_mvvm.view.listeners.BackPressListener
-import dagger.android.AndroidInjection
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
-import java.lang.ref.WeakReference
-import java.util.*
-import javax.inject.Inject
-
-/****
- * All the activity should be extended from this parent class.
- * All the common functionalities across activities should be kept here
- * Author: Lajesh Dineshkumar
- * Company: Lavaira
- * Created on: 4/3/19
- * Modified on: 4/3/19
- *****/
-abstract class BaseActivity<V : ViewModel, D : ViewDataBinding> : AppCompatActivity(), HasSupportFragmentInjector,
-    BackButtonHandlerListener {
+import com.google.android.material.snackbar.Snackbar
+import com.rncloud.android.common.ConnectionLiveData
 
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+/**
+ * Created by KondalRao Tirumalasetty on 8/27/2019.
+ */
+abstract class BaseActivity<VM:ViewModel,DB: ViewDataBinding> : AppCompatActivity(){
 
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    protected var TAG: String? = null
 
-    private val backClickListenersList = ArrayList<WeakReference<BackPressListener>>()
+    open val BASE_TAG ="BaseActivity"
 
-    protected lateinit var viewModel: V
+    protected lateinit var binding:DB
 
-    protected lateinit var dataBinding: D
+    protected lateinit var viewModel:VM
 
-    @get:LayoutRes
-    protected abstract val layoutRes: Int
+    private var mSnackBar: Snackbar? = null
 
-//    abstract val bindingVariable: Int
+//    var connectivityReceiver:ConnectivityReceiver = ConnectivityReceiver()
 
-    protected abstract fun getViewModel(): Class<V>
+//    private var connectivityManager: ConnectivityManager?=null
 
+    abstract fun getLayoutRes(): Int
+
+    abstract fun getViewModel(): Class<VM>
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState)
-        dataBinding = DataBindingUtil.setContentView(this, layoutRes)
-        dataBinding.setLifecycleOwner(this)
+        Log.d(BASE_TAG,"onCreate")
+//        TAG = BaseActivity::class.qualifiedName
+        bindView(getLayoutRes())
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModel())
-//        dataBinding.setVariable(bindingVariable, viewModel)
-//        dataBinding.executePendingBindings()
-
-//        observeBackPressAction()
     }
 
-//    /**
-//     * Method which listens to back button press in toolbar
-//     */
-//    private fun observeBackPressAction() {
-//        (viewModel as BaseViewModel<*>).backPressAction.observe(this, Observer { observable: Observable, any: Any ->
-//            onBackPressed()
-//        })
-//    }
-//
-//    /**
-//     * Method which sets the title in the header
-//     */
-//    fun setTitle(title: String) {
-//        (viewModel as BaseViewModel<*>).setTitle(title)
-//    }
-
-    /**
-     * Methods which handles the hardware back button / navigation back view
-     */
-    override fun onBackPressed() {
-        if (!fragmentsBackKeyIntercept()) {
-            super.onBackPressed()
-        }
+    override fun onStart() {
+        super.onStart()
+        val connectionLiveData = ConnectionLiveData(this)
+        connectionLiveData.observe(this, Observer {
+            Log.d(TAG,"connectionLiveData.observe")
+            // do whatever you want with network connectivity change
+            showMessage(it)
+        })
     }
 
-    /**
-     * Add the back navigation listener here.
-     * Call this method from onAttach of your fragment
-     * @param listner - back navigation listener
-     */
-    override fun addBackpressListener(listner: BackPressListener) {
-        backClickListenersList.add(WeakReference(listner))
+    inline fun <reified T> T.TAG(): String = T::class.java.simpleName
+
+    protected fun bindView(layoutId: Int) {
+        binding = DataBindingUtil.setContentView(this, layoutId)
+//        viewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModel())
+        viewModel = ViewModelProviders.of(this).get(getViewModel())
+//        this.viewModel = if (mViewModel == null) getViewModel() else mViewModel
+//        binding.setVariable(BR.vi, mViewModel)
+
+        binding.lifecycleOwner = this
+
     }
 
-    /**
-     * remove the back navigation listener here.
-     * Call this method from onDetach of your fragment
-     * @param listner - back navigation listener
-     */
-    override fun removeBackpressListener(listner: BackPressListener) {
-        val iterator = backClickListenersList.iterator()
-        while (iterator.hasNext()) {
-            val weakRef = iterator.next()
-            if (weakRef.get() === listner) {
-                iterator.remove()
+    override fun onResume() {
+        super.onResume()
+        Log.d(BASE_TAG,"onResume")
+
+//        registerReceiver(connectivityReceiver,  IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+
+//        ConnectivityReceiver.connectivityReceiverListener = this
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
             }
+
         }
+        return super.onOptionsItemSelected(item)
+
     }
 
-    /**
-     * This method checks if any frgament is overriding the back button behavior or not
-     * @return true/false
-     */
-    private fun fragmentsBackKeyIntercept(): Boolean {
-        var isIntercept = false
-        for (weakRef in backClickListenersList) {
-            val backpressListner = weakRef.get()
-            if (backpressListner != null) {
-                val isFragmIntercept: Boolean = backpressListner.onBackPress()
-                if (!isIntercept)
-                    isIntercept = isFragmIntercept
+    protected fun showMessage(isConnected: Boolean) {
+        if (!isConnected) {
+
+            val messageToUser = "You are offline now."
+
+            mSnackBar = Snackbar.make(
+                findViewById(android.R.id.content),
+//                findViewById(com.google.android.material.R.id.snackbar_text),
+                messageToUser,
+                Snackbar.LENGTH_INDEFINITE
+            ) //Assume "rootLayout" as the root layout of every activity.
+
+            mSnackBar?.show()
+            Toast.makeText(this, messageToUser, Toast.LENGTH_LONG).show()
+        } else {
+            val messageToUser = "You are online now."
+            if (mSnackBar !=null && mSnackBar!!.isShown){
+                val snackBarText = mSnackBar!!.getView().findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+                snackBarText.setText(messageToUser)
+                snackBarText.setTextColor(ContextCompat.getColor(this,android.R.color.white))
+                snackBarText.setBackgroundColor(ContextCompat.getColor(this,android.R.color.holo_green_dark));
+
+                Handler().postDelayed({
+
+                    mSnackBar?.dismiss()
+                },2000)
+
+                Toast.makeText(this, messageToUser, Toast.LENGTH_LONG).show()
             }
+
+
         }
-        return isIntercept
     }
 
-    override fun supportFragmentInjector() = dispatchingAndroidInjector
+    protected fun showNoNetworkMsg(){
+        Toast.makeText(this, "No Network..", Toast.LENGTH_LONG).show()
+    }
+
+    protected fun showErrorRespMsg(){
+        Toast.makeText(this, "Something went wrong..", Toast.LENGTH_LONG).show()
+    }
+
+
+    fun showProgressBar(view: FrameLayout){
+        view.visibility = View.VISIBLE
+    }
+
+    fun hideProgressBar(view: FrameLayout){
+        view.visibility = View.VISIBLE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        if (connectivityReceiver!=null)
+//            unregisterReceiver(connectivityReceiver)
+
+    }
 }

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="licence"
+                type="com.rncloud.android.model.Licence" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context=".view.activity.AddEditLicenceActivity"
+            android:layout_margin="5dp"
+            tools:showIn="@layout/activity_add_edit_licence">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_licence_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_licence_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_licence_type"
+                    android:text="@{licence.credentialType}"
+                    />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_licence_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_licence_type">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_licence_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_licence_no"
+                    android:text="@{licence.credentialNumber}"
+                    />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_licence_valid_from"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/til_licence_valid_to"
+                app:layout_constraintTop_toBottomOf="@+id/til_licence_no"
+                app:layout_constraintHorizontal_chainStyle="packed"
+
+                >
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_licence_valid_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_valid_from"
+                    android:text="@{licence.validFromFormatted}"
+                    />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_licence_valid_to"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/til_licence_valid_from"
+                app:layout_constraintTop_toBottomOf="@+id/til_licence_no">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_licence_valid_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_valid_to"
+                    android:text="@{licence.validToFormatted}"
+                    />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+                android:id="@+id/tv_label_licence_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/prompt_licencing_state"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_licence_valid_from"
+
+                >
+
+
+        </TextView>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_licence_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_label_licence_state">
+
+        </androidx.appcompat.widget.AppCompatSpinner>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_licence_addl_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_licence_state">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_licence_addl_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_licence_additional_dtls"
+                    android:text="@{licence.additionalDetail}"
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_licence_remarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_licence_addl_details">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_licence_addl_remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_licence_remarks"
+                    android:text="@{licence.remarks}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/action_submit"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_licence_remarks" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
