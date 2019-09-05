@@ -13,3 +13,5 @@ data class CertificationsResp(val Result: List<Certification>):BaseResp()
 data class MedicalDocsResp(val Result: List<MedicalDoc>):BaseResp()
 
 data class LicenceStateResp(val Result: List<LicenceState>):BaseResp()
+
+data class SchedulesResp(val Result: List<Schedule>):BaseResp()

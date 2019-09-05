@@ -45,4 +45,8 @@
     <string name="prompt_licence_additional_dtls">Additional Details</string>
     <string name="prompt_licence_remarks">Remarks</string>
     <string name="action_submit">Submit</string>
+
+<!--    <string name="schedule_shift_type_night">%1$s ( %2$s %3$s)</string>-->
+    <string name="schedule_shift_type_night">%1$s</string>
+    <string name="sch_compensation">$%1$s</string>
 </resources>
