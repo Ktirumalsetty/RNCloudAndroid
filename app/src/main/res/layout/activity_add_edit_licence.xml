@@ -5,9 +5,13 @@
         xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"></import>
         <variable
                 name="licence"
                 type="com.rncloud.android.model.Licence" />
+        <variable
+                name="viewModel"
+                type="com.rncloud.android.view.activity.AddEditLicenceViewModel" />
 
     </data>
 
@@ -30,8 +34,12 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/content_add_edit_licence"
+        <include android:id="@+id/content"
+                layout="@layout/content_add_edit_licence"
                 bind:licence="@{licence}"/>
+        <include android:id="@+id/content_progress"
+                layout="@layout/include_progress_overlay"
+                android:visibility="@{viewModel.isLoading() ? View.VISIBLE: View.GONE}"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:context=".view.activity.AddEditLicenceActivity"
-            android:layout_margin="5dp"
+            android:layout_margin="15dp"
             tools:showIn="@layout/activity_add_edit_licence">
 
 
@@ -23,7 +23,7 @@
                 android:id="@+id/til_licence_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.Design.TextInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -74,6 +74,9 @@
                     android:id="@+id/et_licence_valid_from"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusableInTouchMode="false"
+                    android:inputType="date"
                     android:hint="@string/prompt_valid_from"
                     android:text="@{licence.validFromFormatted}"
                     />
@@ -93,6 +96,8 @@
                     android:id="@+id/et_licence_valid_to"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:inputType="date"
                     android:hint="@string/prompt_valid_to"
                     android:text="@{licence.validToFormatted}"
                     />
@@ -103,6 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
                 android:text="@string/prompt_licencing_state"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/til_licence_valid_from"
@@ -127,7 +133,7 @@
                 android:id="@+id/til_licence_addl_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

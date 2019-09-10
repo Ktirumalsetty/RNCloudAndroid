@@ -8,3 +8,11 @@ data class GenericReqModel(
 
 
 )
+
+data class MasterDataReqModel(
+    val CodeType: String = "",
+//    val ActorCode: Int = AppPreferences.actorCode,
+    val SendApiRequestModel: SendApiRequestModel = SendApiRequestModel(AppPreferences.authGenKey,1,AppPreferences.userName)
+
+
+)

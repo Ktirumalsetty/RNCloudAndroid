@@ -27,7 +27,7 @@ interface APIService {
 
             if (BuildConfig.DEBUG) {
                 val logging = HttpLoggingInterceptor()
-                logging.level = HttpLoggingInterceptor.Level.BASIC
+                logging.level = HttpLoggingInterceptor.Level.BODY
                 okHttpClientBuilder.addInterceptor(logging)
             }
 //            val gson = GsonBuilder().setLenient().create()
@@ -75,7 +75,7 @@ interface APIService {
     fun getMedicalDocsInfo(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<MedicalDocsResp>
 
     @POST("MasterData/GetCodeValuesByType")
-    fun getLicenceStates(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: GenericReqModel): Call<LicenceStateResp>
+    fun getLicenceStates(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: MasterDataReqModel): Call<LicenceStateResp>
 
     @POST("Hcare/GetJobApplicationsInfoByRegistryOnDemand")
     fun getSchedules(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: SchedulesReqModel): Call<SchedulesResp>

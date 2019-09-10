@@ -1,7 +1,9 @@
 package com.rncloud.android.model
 
 import android.graphics.drawable.Drawable
+import androidx.core.content.ContextCompat
 import com.rncloud.android.R
+import com.rncloud.android.RNCloudApplication
 import com.rncloud.android.common.DateTimeUtils
 
 data class Schedule(
@@ -71,15 +73,16 @@ data class Schedule(
     get() = DateTimeUtils.formatToDay(OrderDate)
     val orderMonthYear:String
     get() = DateTimeUtils.formatToMonthYear(OrderDate)
-    val schStatusFormatted:Int
+    val schStatusFormatted:Drawable
     get() = if (ApplicationStatus.equals("Assigned")){
-        R.drawable.sch_booked_status
+        ContextCompat.getDrawable(RNCloudApplication.context,R.drawable.sch_booked_status)!!
     }else if (ApplicationStatus.equals("Released Offer")){
-        R.drawable.sch_pending_status
+        ContextCompat.getDrawable(RNCloudApplication.context, R.drawable.sch_pending_status)!!
+
     }else if (ApplicationStatus.equals("Rejected")){
-        R.drawable.sch_rejected_status
+        ContextCompat.getDrawable(RNCloudApplication.context, R.drawable.sch_rejected_status)!!
     }else{
-        R.drawable.round_dot
+        ContextCompat.getDrawable(RNCloudApplication.context, R.drawable.round_dot)!!
 
     }
 }
