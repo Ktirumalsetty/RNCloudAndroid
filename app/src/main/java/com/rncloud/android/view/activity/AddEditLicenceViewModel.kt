@@ -24,7 +24,7 @@ class AddEditLicenceViewModel : BaseViewModel() {
 
     fun getStates() {
         _isLoading.value = true
-        apiService.getLicenceStates(AppPreferences.authGenKey, MasterDataReqModel("CTIAT"))
+        apiService.getLicenceStates(AppPreferences.authGenKey, MasterDataReqModel("STATE"))
             .enqueue(object : Callback<LicenceStateResp> {
                 override fun onFailure(call: Call<LicenceStateResp>, t: Throwable) {
                     _isLoading.value = false

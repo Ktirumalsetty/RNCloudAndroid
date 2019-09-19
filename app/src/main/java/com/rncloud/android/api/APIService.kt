@@ -77,6 +77,12 @@ interface APIService {
     @POST("MasterData/GetCodeValuesByType")
     fun getLicenceStates(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: MasterDataReqModel): Call<LicenceStateResp>
 
+    @POST("MasterData/GetCodeValuesByType")
+    fun getCertStates(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: MasterDataReqModel): Call<CertificationsResp>
+
     @POST("Hcare/GetJobApplicationsInfoByRegistryOnDemand")
     fun getSchedules(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: SchedulesReqModel): Call<SchedulesResp>
+
+    @POST("Hcare/GetJobRecommendsByNurseInfoOnDemand")
+    fun getJobs(@Header("AuthGenKEY") authGenKey:String, @Body reqModel: JobsReqModel): Call<JobsResp>
 }

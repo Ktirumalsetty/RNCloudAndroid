@@ -15,3 +15,5 @@ data class MedicalDocsResp(val Result: List<MedicalDoc>):BaseResp()
 data class LicenceStateResp(val Result: List<LicenceState>):BaseResp()
 
 data class SchedulesResp(val Result: List<Schedule>):BaseResp()
+
+data class JobsResp(val Result: List<Job>):BaseResp()

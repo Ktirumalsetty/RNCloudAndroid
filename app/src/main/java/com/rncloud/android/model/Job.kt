@@ -1,0 +1,68 @@
+package com.rncloud.android.model
+
+import com.rncloud.android.common.DateTimeUtils
+import java.io.Serializable
+
+data class Job(
+    val `$id`: String,
+    val ActorImageCode: Int,
+    val ActorImageFile: String,
+    val ActorImageFileExtension: String,
+    val ActorImageFileUrl: String,
+    val ApplicationDate: String,
+    val ApplicationRemarks: String,
+    val ApplicationStatus: String,
+    val CareUnitName: String,
+    val ContractPeriodInDays: Int,
+    val H2RPayRate: Double,
+    val HospitalActorCode: Int,
+    val HospitalAddressLine1: String,
+    val HospitalAddressLine2: String,
+    val HospitalCity: String,
+    val HospitalCountry: String,
+    val HospitalCountryLongValue: String,
+    val HospitalDisplayName: String,
+    val HospitalFacilityCode: Int,
+    val HospitalState: String,
+    val HospitalTelephone1: String,
+    val HospitalTelephone2: String,
+    val JobApplicationCode: Int,
+    val JobCode: Int,
+    val JobDescription: String,
+    val JobFormattedCode: String,
+    val JobOrderCode: Int,
+    val JobPostBenefits: String,
+    val JobPostCode: Int,
+    val JobPostCount: Int,
+    val JobPostDescription: String,
+    val JobType: String,
+    val JoinByDate: String,
+    val OrderCount: Int,
+    val OrderDate: String,
+    val OrderStatus: String,
+    val PostedDate: String,
+    val ProposedCopmpensation: String,
+    val R2NPayRate: Double,
+    val RegistryActorCode: Int,
+    val RegistryAddressLine1: String,
+    val RegistryAddressLine2: String,
+    val RegistryCity: String,
+    val RegistryCountry: String,
+    val RegistryCountryLongValue: String,
+    val RegistryDisplayName: String,
+    val RegistryFacilityCode: Any,
+    val RegistryState: String,
+    val RegistryTelephone1: String,
+    val RegistryTelephone2: String,
+    val Remarks: String,
+    val RowNo: Int,
+    val ShiftFromTime: String,
+    val ShiftToTime: String,
+    val ShiftType: String,
+    val StaffDesc: String,
+    val StaffType: String
+):Serializable{
+
+    val JoinByDateFormatted: String
+        get() = DateTimeUtils.formatToDate(JoinByDate)
+}

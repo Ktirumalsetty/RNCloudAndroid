@@ -46,7 +46,16 @@
     <string name="prompt_licence_remarks">Remarks</string>
     <string name="action_submit">Submit</string>
 
-<!--    <string name="schedule_shift_type_night">%1$s ( %2$s %3$s)</string>-->
+    <!--    <string name="schedule_shift_type_night">%1$s ( %2$s %3$s)</string>-->
     <string name="schedule_shift_type_night">%1$s</string>
     <string name="sch_compensation">$%1$s</string>
+    <string name="title_activity_add_edit_certification">Add Certification</string>
+    <string name="prompt_certification_type">Certificate Type*</string>
+    <string name="prompt_issue_date">Issue Date</string>
+    <string name="prompt_expiry_date">Expiring Date</string>
+    <string name="prompt_certification_no">Certificate Number</string>
+    <string name="prompt_issuing_authority">Issuing Authority</string>
+    <string name="title_activity_edit_cert">Edit Certification</string>
+    <string name="title_activity_add_cert">Add Certification</string>
+    <string name="title_delete">Delete</string>
 </resources>

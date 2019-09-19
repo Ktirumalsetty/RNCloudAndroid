@@ -1,5 +1,6 @@
 package com.rncloud.android.view.fragment
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,10 +11,15 @@ import androidx.lifecycle.Observer
 
 import com.rncloud.android.R
 import com.rncloud.android.adapter.CertificationsAdapter
+import com.rncloud.android.adapter.ClickListener
 import com.rncloud.android.adapter.EmploymentAdapter
+import com.rncloud.android.adapter.RecyclerTouchListener
 import com.rncloud.android.databinding.CertificationsFragmentBinding
 import com.rncloud.android.model.Certification
 import com.rncloud.android.model.Employment
+import com.rncloud.android.model.Licence
+import com.rncloud.android.view.activity.AddEditCertificationActivity
+import com.rncloud.android.view.activity.AddEditLicenceActivity
 
 class CertificationsFragment : BaseFragment<CertificationsFragmentBinding>() {
     override val layoutRes: Int
@@ -24,6 +30,9 @@ class CertificationsFragment : BaseFragment<CertificationsFragmentBinding>() {
     }
 
     private lateinit var viewModel: CertificationsViewModel
+
+    private lateinit var certifications: ArrayList<Certification>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +52,25 @@ class CertificationsFragment : BaseFragment<CertificationsFragmentBinding>() {
 
         viewModel.certificationsRespLiveData.observe(this, Observer {
             if (it!=null && !it.hasError ){
-                var certification = it.Result as ArrayList<Certification>
-                binding.rvCertifications.adapter = CertificationsAdapter(certification)
+                certifications = it.Result as ArrayList<Certification>
+                binding.rvCertifications.adapter = CertificationsAdapter(certifications)
             }else{
                 showErrorRespMsg()
             }
         })
+
+        binding.rvCertifications.addOnItemTouchListener(RecyclerTouchListener(context,binding.rvCertifications,object:
+            ClickListener {
+            override fun onClick(view: View, position: Int) {
+                val certification = certifications[position]
+                startActivity(Intent(context, AddEditCertificationActivity::class.java).putExtra("certificationObj",certification))
+            }
+
+            override fun onLongClick(view: View, position: Int) {
+            }
+
+        }))
+
     }
 
 }

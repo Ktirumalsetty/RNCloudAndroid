@@ -1,288 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                   xmlns:tools="http://schemas.android.com/tools"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_margin="5dp"
-                                   style="@style/CardView.Light"
-        >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content">
+        <variable
+                name="job"
+                type="com.rncloud.android.model.Job" />
 
-    <TextView
-            android:text="OR Nurse"
-            android:layout_width="wrap_content"
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_role"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="4dp"
-            android:textColor="@color/colorBlack"
-
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
-            />
-
-    <TextView
-            android:text="Centinela Medical Center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_hospital"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_role"
-            app:layout_constraintStart_toStartOf="@+id/tv_role"
-            android:textColor="@color/colorBlack"
-            />
-
-    <TextView
-            android:text="Med Surge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_specialty"
-            app:layout_constraintStart_toStartOf="@+id/tv_hospital"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_hospital"
-            android:textColor="@color/colorBlack"
-            />
-
-    <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_location"
-            app:layout_constraintStart_toStartOf="@+id/tv_specialty"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_specialty"/>
-
-    <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/jobs_amount_border"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="2dp"
+            app:contentPadding="5dp"
+            android:layout_margin="5dp"
             >
 
-        <TextView
-                android:text="$1"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_amount"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp"
-                />
+                android:layout_marginBottom="8dp"
 
-        <TextView
-                android:text="Per hour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                >
 
-                android:id="@+id/tv_per_hour_label"
-                />
+            <TextView
+                    tools:text="OR Nurse"
+                    android:text="@{job.StaffType}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_role"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="4dp"
+                    android:textColor="@color/colorBlack"
 
-    </LinearLayout>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse" />
 
-    <!--<View-->
-    <!--android:id="@+id/view_shift_timings_background"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:background="@drawable/job_rect_border"-->
-    <!--app:layout_constraintBottom_toBottomOf="@+id/tv_shift_timings_value"-->
-    <!--app:layout_constraintEnd_toEndOf="@+id/tv_label_shift_timings"-->
-    <!--app:layout_constraintStart_toStartOf="@+id/tv_label_shift_timings"-->
-    <!--app:layout_constraintTop_toTopOf="@+id/tv_label_shift_timings"-->
+            <TextView
+                    android:text="@{job.hospitalDisplayName}"
+                    tools:text="Centinela Medical Center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_hospital"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_role"
+                    app:layout_constraintStart_toStartOf="@+id/tv_role"
+                    android:textColor="@color/colorBlack" />
 
+            <TextView
+                    android:text="@{job.CareUnitName}"
+                    tools:text="Med Surge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_specialty"
+                    app:layout_constraintStart_toStartOf="@+id/tv_hospital"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_hospital"
+                    android:textColor="@color/colorBlack" />
 
-    <!--/>-->
+            <TextView
+                    android:text="@{job.hospitalCity+`,`+job.HospitalState}"
+                    tools:text="California,Alabama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_location"
+                    app:layout_constraintStart_toStartOf="@+id/tv_specialty"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_specialty" />
 
-    <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rl_shift_background"
-            android:background="@drawable/job_rect_border"
-            app:layout_constraintTop_toBottomOf="@+id/tv_location"
-            app:layout_constraintStart_toStartOf="@+id/tv_location"
-            android:layout_marginTop="10dp"
-            android:padding="5dp"
-            style="@style/Widget.MaterialComponents.CardView"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintEnd_toStartOf="@+id/rl_duration_background">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/jobs_amount_border">
 
-        <TextView
-                android:text="Shift Timings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_label_shift_timings"
-                android:layout_centerHorizontal="true"
+                <TextView
+                        android:text="@{`$`+job.proposedCopmpensation}"
+                        tools:text="$1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_amount"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="8dp" />
 
+                <TextView
+                        android:text="Per hour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
 
-                />
+                        android:id="@+id/tv_per_hour_label" />
 
-        <TextView
-                android:text="07:00 - 20:00"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_shift_timings_value"
-                android:layout_below="@+id/tv_label_shift_timings"
-                android:layout_centerHorizontal="true"
+            </LinearLayout>
 
-                android:textColor="@color/colorBlack"
-
-                />
-    </RelativeLayout>
-
-
-    <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rl_duration_background"
-            android:background="@drawable/job_rect_border"
-            app:layout_constraintStart_toEndOf="@+id/rl_shift_background"
-            app:layout_constraintTop_toTopOf="@+id/rl_shift_background"
-            android:padding="5dp"
-            app:layout_constraintHorizontal_chainStyle="packed"
-
-            app:layout_constraintEnd_toStartOf="@+id/rl_start_date_background">
-
-        <TextView
-                android:text="Duration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_duration_label"
-                android:layout_centerHorizontal="true"
-
-
-                />
-
-        <TextView
-                android:text="1 Week"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_duration_label_value"
-                android:layout_below="@+id/tv_duration_label"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/colorBlack"
-
-                />
-    </RelativeLayout>
-
-    <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rl_start_date_background"
-            android:background="@drawable/job_rect_border"
-            app:layout_constraintStart_toEndOf="@+id/rl_duration_background"
-            app:layout_constraintTop_toTopOf="@+id/rl_duration_background"
-            android:padding="5dp"
+            <!--<View-->
+            <!--android:id="@+id/view_shift_timings_background"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:background="@drawable/job_rect_border"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/tv_shift_timings_value"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/tv_label_shift_timings"-->
+            <!--app:layout_constraintStart_toStartOf="@+id/tv_label_shift_timings"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/tv_label_shift_timings"-->
 
 
-            app:layout_constraintEnd_toEndOf="parent">
+            <!--/>-->
 
-        <TextView
-                android:text="Start Date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_start_date_label"
-                android:layout_centerHorizontal="true"
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rl_shift_background"
+                    android:background="@drawable/job_rect_border"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_location"
+                    app:layout_constraintStart_toStartOf="@+id/tv_location"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    style="@style/Widget.MaterialComponents.CardView"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintEnd_toStartOf="@+id/rl_duration_background">
 
-
-                />
-
-        <TextView
-                android:text="1 Week"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_start_date__value"
-                android:layout_below="@+id/tv_start_date_label"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/colorBlack"
-
-                />
-    </RelativeLayout>
-
-    <!--<View-->
-    <!--android:id="@+id/view_duration_background"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:background="@drawable/job_rect_border"-->
-    <!--app:layout_constraintBottom_toBottomOf="@+id/tv_duration_value"-->
-    <!--app:layout_constraintEnd_toEndOf="@+id/tv_duration_label"-->
-    <!--app:layout_constraintStart_toStartOf="@+id/tv_duration_label"-->
-    <!--app:layout_constraintTop_toTopOf="@+id/tv_duration_label"-->
-    <!--app:layout_constraintLeft_toRightOf="@+id/view_shift_timings_background"-->
+                <TextView
+                        android:text="Shift Timings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_label_shift_timings"
+                        android:layout_centerHorizontal="true"
 
 
-    <!--/>-->
+                        />
 
-    <!--<TextView-->
-    <!--android:text="Duration"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/tv_duration_label"-->
-    <!--app:layout_constraintTop_toTopOf="@+id/tv_label_shift_timings"-->
-    <!--app:layout_constraintStart_toEndOf="@+id/view_shift_timings_background"-->
-    <!--android:layout_marginStart="8dp"/>-->
+                <TextView
+                        android:text="@{job.shiftFromTime+` - `+job.shiftToTime}"
+                        tools:text="07:00 - 20:00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_shift_timings_value"
+                        android:layout_below="@+id/tv_label_shift_timings"
+                        android:layout_centerHorizontal="true"
 
-    <!--<TextView-->
-    <!--android:text="1 Week"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/tv_duration_value"-->
-    <!--app:layout_constraintEnd_toEndOf="@+id/tv_duration_label"-->
-    <!--app:layout_constraintStart_toStartOf="@+id/tv_duration_label"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/tv_duration_label"/>-->
+                        android:textColor="@color/colorBlack"
 
-    <!--<View-->
-    <!--android:id="@+id/view_duration_start_date"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:background="@drawable/job_rect_border"-->
-    <!--app:layout_constraintBottom_toBottomOf="@+id/tv_start_date_value"-->
-    <!--app:layout_constraintEnd_toEndOf="@+id/tv_start_date_value"-->
-    <!--app:layout_constraintStart_toStartOf="@+id/tv_start_date_value"-->
-    <!--app:layout_constraintTop_toTopOf="@+id/tv_start_date_label"-->
-    <!--app:layout_constraintLeft_toRightOf="@+id/view_duration_background"-->
+                        />
+            </RelativeLayout>
 
 
-    <!--/>-->
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rl_duration_background"
+                    android:background="@drawable/job_rect_border"
+                    app:layout_constraintStart_toEndOf="@+id/rl_shift_background"
+                    app:layout_constraintTop_toTopOf="@+id/rl_shift_background"
+                    android:padding="5dp"
+                    app:layout_constraintHorizontal_chainStyle="packed"
 
-    <!--<TextView-->
-    <!--android:text="Start Date"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/tv_start_date_label"-->
-    <!--app:layout_constraintTop_toTopOf="@+id/tv_duration_label"-->
-    <!--app:layout_constraintStart_toEndOf="@+id/view_duration_background"-->
-    <!--android:layout_marginStart="8dp"/>-->
+                    app:layout_constraintEnd_toStartOf="@+id/rl_start_date_background">
 
-    <!--<TextView-->
-    <!--android:text="Oct 06,2018"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/tv_start_date_value"-->
-    <!--app:layout_constraintEnd_toEndOf="@+id/tv_start_date_label"-->
-    <!--app:layout_constraintStart_toStartOf="@+id/tv_start_date_label"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/tv_start_date_label"/>-->
+                <TextView
+                        android:text="Duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_duration_label"
+                        android:layout_centerHorizontal="true"
 
 
-    <!--<View-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:id="@+id/view_amount_border"-->
+                        />
 
-    <!--app:layout_constraintBottom_toBottomOf="@+id/tv_per_hour_label"-->
-    <!--app:layout_constraintTop_toTopOf="@+id/tv_amount"-->
-    <!--app:layout_constraintEnd_toEndOf="@+id/tv_amount"-->
-    <!--android:background="@drawable/jobs_amount_border"-->
-    <!--/>-->
-</androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+                <TextView
+                        android:text="@{job.ContractPeriodInDays+` Day`}"
+                        tools:text="1 Week"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_duration_label_value"
+                        android:layout_below="@+id/tv_duration_label"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/colorBlack"
+
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rl_start_date_background"
+                    android:background="@drawable/job_rect_border"
+                    app:layout_constraintStart_toEndOf="@+id/rl_duration_background"
+                    app:layout_constraintTop_toTopOf="@+id/rl_duration_background"
+                    android:padding="5dp"
+
+
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                        android:text="Start Date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_start_date_label"
+                        android:layout_centerHorizontal="true"
+
+
+                        />
+
+                <TextView
+                        android:text="@{job.JoinByDateFormatted}"
+                        tools:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_start_date__value"
+                        android:layout_below="@+id/tv_start_date_label"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/colorBlack"
+
+                        />
+            </RelativeLayout>
+
+            <!--<View-->
+            <!--android:id="@+id/view_duration_background"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:background="@drawable/job_rect_border"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/tv_duration_value"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/tv_duration_label"-->
+            <!--app:layout_constraintStart_toStartOf="@+id/tv_duration_label"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/tv_duration_label"-->
+            <!--app:layout_constraintLeft_toRightOf="@+id/view_shift_timings_background"-->
+
+
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:text="Duration"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/tv_duration_label"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/tv_label_shift_timings"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/view_shift_timings_background"-->
+            <!--android:layout_marginStart="8dp"/>-->
+
+            <!--<TextView-->
+            <!--android:text="1 Week"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/tv_duration_value"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/tv_duration_label"-->
+            <!--app:layout_constraintStart_toStartOf="@+id/tv_duration_label"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tv_duration_label"/>-->
+
+            <!--<View-->
+            <!--android:id="@+id/view_duration_start_date"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:background="@drawable/job_rect_border"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/tv_start_date_value"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/tv_start_date_value"-->
+            <!--app:layout_constraintStart_toStartOf="@+id/tv_start_date_value"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/tv_start_date_label"-->
+            <!--app:layout_constraintLeft_toRightOf="@+id/view_duration_background"-->
+
+
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:text="Start Date"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/tv_start_date_label"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/tv_duration_label"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/view_duration_background"-->
+            <!--android:layout_marginStart="8dp"/>-->
+
+            <!--<TextView-->
+            <!--android:text="Oct 06,2018"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/tv_start_date_value"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/tv_start_date_label"-->
+            <!--app:layout_constraintStart_toStartOf="@+id/tv_start_date_label"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tv_start_date_label"/>-->
+
+
+            <!--<View-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:id="@+id/view_amount_border"-->
+
+            <!--app:layout_constraintBottom_toBottomOf="@+id/tv_per_hour_label"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/tv_amount"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/tv_amount"-->
+            <!--android:background="@drawable/jobs_amount_border"-->
+            <!--/>-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

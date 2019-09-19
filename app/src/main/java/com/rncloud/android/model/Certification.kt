@@ -1,5 +1,8 @@
 package com.rncloud.android.model
 
+import com.rncloud.android.common.DateTimeUtils
+import java.io.Serializable
+
 data class Certification(
     val `$id`: String,
     val ActorCode: Int,
@@ -17,4 +20,9 @@ data class Certification(
     val Remarks: String,
     val ValidFrom: String,
     val ValidTo: String
-)
+): Serializable {
+    val issueDateF: String
+        get() = DateTimeUtils.formatToDate(ValidFrom)
+    val expDateF: String
+        get() = DateTimeUtils.formatToDate(ValidTo)
+}

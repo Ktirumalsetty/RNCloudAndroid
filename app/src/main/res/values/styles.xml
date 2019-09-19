@@ -32,8 +32,14 @@
 
     <style name="LoginButton" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_height">60dp</item>
-        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="cornerRadius">5dp</item>
+    </style>
+
+    <style name="MyTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+
     </style>
 
     <!--<style name="AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />-->
